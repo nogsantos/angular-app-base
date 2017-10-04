@@ -1,0 +1,21 @@
+.sidenav-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sidenav-container md-sidenav {
+    min-height: 50rem;
+    max-width: 200px;
+}
+
+.sidenav-container .mat-sidenav-content,
+.sidenav-container md-sidenav {
+    display: flex;
+    overflow: visible;
+}
+
+.scrolling-content {
+    overflow: auto;
+}

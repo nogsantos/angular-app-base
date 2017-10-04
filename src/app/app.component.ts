@@ -1,4 +1,4 @@
-import { Component, OnInit, Provider } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
@@ -8,7 +8,8 @@ import 'rxjs/add/operator/mergeMap';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
     current_year: string;

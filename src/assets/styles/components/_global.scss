@@ -864,10 +864,10 @@ th {
 }
 
 .data-end-message {
-    color: lighten($background-color, 15%);
+    color: darken($background-color, 15%);
     @extend .flow-text;
 }
 
 .make-text-style {
-    color: lighten($background-color, 15%);
+    color: darken($background-color, 15%);
 }

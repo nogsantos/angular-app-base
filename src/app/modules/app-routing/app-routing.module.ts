@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { IndexComponent } from '../../components/index/index.component';
+import { UserProfileComponent } from '../../components/user-profile/user-profile.component';
 import { NotFoundComponent } from '../../components/not-found/not-found.component';
 /**
  * Rotas
@@ -13,6 +14,13 @@ const appRoutes: Routes = [
         component: IndexComponent,
         data: {
             title: 'Index'
+        }
+    },
+    {
+        path: 'user',
+        component: UserProfileComponent,
+        data: {
+            title: 'User'
         }
     },
     {

@@ -9,15 +9,19 @@ import { MaterialModule } from './modules/material/material.module';
 import 'hammerjs';
 
 import { IndexComponent } from './components/index/index.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { TopNavComponent } from './components/top-nav/top-nav.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NavbarComponent,
         IndexComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        SideNavComponent,
+        TopNavComponent,
+        UserProfileComponent
     ],
     imports: [
         AppRoutingModule,

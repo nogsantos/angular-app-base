@@ -1,10 +1,25 @@
 <div class="row" id="nav-top">
-    <md-toolbar class="grey darken-4 z-depth-2">
-        <app-navbar></app-navbar>
+    <md-toolbar class="blue darken-3 z-depth-2">
+        <app-top-nav></app-top-nav>
     </md-toolbar>
 </div>
 <div class="row" id="main-container">
-    <router-outlet></router-outlet>
+    <md-sidenav-container class="sidenav-container">
+        <md-sidenav #sidenav mode="side" opened="true">
+            <div class="scrolling-content">
+                <div class="row">
+                    <app-side-nav></app-side-nav>
+                </div>
+                <div class="row">
+                    <button md-button (click)="sidenav.toggle()">Collapse <<</button>
+                </div>
+            </div>
+        </md-sidenav>
+        <div class="content">
+            <button md-button *ngIf="!sidenav.opened" (click)="sidenav.toggle()">Expand >></button>
+            <router-outlet></router-outlet>
+        </div>
+    </md-sidenav-container>
 </div>
 <div class="row">
     <div class="col s12 m12 l12 center make-text-style">
