@@ -1,3 +1,9 @@
-# SWAPI Client - The Star Wars API
+# Angular web client
 
-A web client for [Star Wars API](https://swapi.co) build with Angular 4
+Cliente web base. Angular framework.
+
+## Recursos
+
+* i18next [WIP]
+* Autentication [WIP]
+
