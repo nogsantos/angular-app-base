@@ -1,0 +1,68 @@
+{
+"A": "------------------------------",
+
+"B": "------------------------------",
+
+"C": "------------------------------",
+    "code": {
+        "204": "Código: 204 - O servidor processou a solicitação com sucesso, mas não está retornando nenhum conteúdo.",
+        "400": "Código: 400 - Requisição não realizada corretamente.",
+        "401": "Código: 401 - Não autorizado.<br>Para acessar, você deve possuir um usuário válido com permissão de acesso a esse recurso.",
+        "404": "Código: 404 - Recurso não encontrado.",
+        "410": "Código: 410 - O recurso solicitado não está mais disponível.",
+        "422": "Código: 422 - Falha no processamento da requisição.",
+        "429": "Muitas requisições estão sendo solicitadas para o serviço.",
+        "500": "Código: 500 - Ocorreu um erro no serviço.<br>Favor entrar em contato com a equipe de suporte informando o código.",
+        "501": "Código: 501 - Recurso não implementado.",
+        "503": "Código: 503 - Serviço indisponível<br>Não foi possível a comunicação com o serviço.",
+        "undefined": "Código: 503 - Serviço indisponível<br>Não foi possível a comunicação com o serviço."
+    },
+
+"D": "------------------------------",
+
+"E": "------------------------------",
+
+"F": "------------------------------",
+
+"G": "------------------------------",
+
+"H": "------------------------------",
+    "hello":"Olá",
+
+"I": "------------------------------",
+
+"J": "------------------------------",
+
+"L": "------------------------------",
+
+"M": "------------------------------",
+
+"N": "------------------------------",
+
+"O": "------------------------------",
+
+"P": "------------------------------",
+
+"Q": "------------------------------",
+
+"R": "------------------------------",
+
+"S": "------------------------------",
+
+"T": "------------------------------",
+
+"U": "------------------------------",
+
+"V": "------------------------------",
+
+"W": "------------------------------",
+
+"X": "------------------------------",
+
+"Y": "------------------------------",
+
+"Z": "------------------------------",
+
+"OTHERS": "------------------------------"
+
+}
