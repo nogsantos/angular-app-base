@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { ComponentResources } from './component-resources';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Sort } from '@angular/material';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class ComponentResoucesService implements ComponentResources {
      * @memberof ComponentResoucesService
      */
     constructor(
-        private dialog: MdDialog,
+        private dialog: MatDialog,
     ) { }
     /**
      * Open a dialog
