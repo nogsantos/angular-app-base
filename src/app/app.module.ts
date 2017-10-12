@@ -2,35 +2,27 @@ import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { APP_BASE_HREF } from '@angular/common';
+import { HttpModule } from '@angular/http';
+import { CoreModule } from './@core/core.module';
 
+import { AppRoutingModule } from './app-routing.module';
+import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './modules/app-routing/app-routing.module';
-import { MaterialModule } from './modules/material/material.module';
 import 'hammerjs';
-
-import { IndexComponent } from './components/index/index.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { SideNavComponent } from './components/side-nav/side-nav.component';
-import { TopNavComponent } from './components/top-nav/top-nav.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
     declarations: [
-        AppComponent,
-        IndexComponent,
-        NotFoundComponent,
-        SideNavComponent,
-        TopNavComponent,
-        UserProfileComponent
+        AppComponent
     ],
     imports: [
         AppRoutingModule,
         BrowserModule,
         BrowserAnimationsModule,
-        FormsModule,
-        MaterialModule
+        FormsModule
     ],
     providers: [
+        { provide: APP_BASE_HREF, useValue: '/' },
         Title
     ],
     bootstrap: [AppComponent]
