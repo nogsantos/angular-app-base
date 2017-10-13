@@ -795,8 +795,13 @@ th {
     position: relative;
 }
 
-.pointer-cursor {
-    cursor: pointer;
+.cursor {
+    &.pointer {
+        cursor: pointer !important;
+    }
+    &.loading {
+        cursor: progress !important;
+    }
 }
 
 .form-spiner {

@@ -1,2 +1,13 @@
-<a mat-button class="white-text" routerLink="/" routerLinkActive="active">Home</a>
-<a mat-button class="white-text" routerLink="/user" routerLinkActive="active">Usuário</a>
+<div class="containerX" layout-align="start center" flex fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap.xs="0">
+    <mat-toolbar fixed color="primary" class="z-depth-2">
+        <div fxFlex>
+            <img src="./assets/images/ic_reorder_{{toggle_icon}}.svg" class="cursor pointer" matTooltip="Visualizar/Ocultar menu" (click)="toggleNavAction()">
+            <a mat-button routerLink="/" routerLinkActive="active">Home</a>
+            <a mat-button class="white-text" routerLink="/user" routerLinkActive="active">Usuário</a>
+        </div>
+        <div fxLayoutAlign="end">
+            <a mat-button class="white-text" routerLink="/">Dados</a>
+            <a mat-button class="white-text" routerLink="/">Sair</a>
+        </div>
+    </mat-toolbar>
+</div>

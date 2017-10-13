@@ -8,11 +8,13 @@
  * @class MaterialModule
  */
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CdkTableModule } from '@angular/cdk/table';
+import { FlexLayoutModule } from '@angular/flex-layout';
 /*
  * Material
  */
@@ -64,6 +66,7 @@ import {
 
 const MATERIAL_MODULES = [
     CdkTableModule,
+    FlexLayoutModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -102,12 +105,12 @@ const COMPONENTS = [
     NavTopComponent
 ];
 
-const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule];
+const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, HttpModule];
 
 
 @NgModule({
     imports: [...BASE_MODULES, ...MATERIAL_MODULES],
     exports: [...BASE_MODULES, ...MATERIAL_MODULES, ...COMPONENTS],
-    declarations: [...COMPONENTS,],
+    declarations: [...COMPONENTS],
 })
 export class ThemeModule { }

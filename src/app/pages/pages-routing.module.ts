@@ -10,6 +10,10 @@ const routes: Routes = [{
     children: [{
         path: 'dashboard',
         component: DashboardComponent,
+    }, {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
     }],
 }];
 

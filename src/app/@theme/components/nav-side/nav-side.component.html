@@ -1,51 +1,28 @@
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened="true">
-        <div class="scrolling-content">
-            <div class="row">
-                <div class="col s12 m12 l12">
-                    User
+<nav fxFlex="1 6 20%" fxFlexOrder fxFlexAlign="stretch" fxFlexOrder.xs="2">
+    <mat-sidenav #sidenav mode="side" opened="true" style="width:257px;border-right:1px solid #ccc">
+        <div class="mat-content bgc-grey-50">
+            <mat-nav-list>
+                <div>
+                    dados dos usuário
+                    <br>
                 </div>
-                <div class="col s12 m12 l12">
-                    <mat-accordion>
-                        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle="true">
-                            <mat-expansion-panel-header>
-                                Operations
-                            </mat-expansion-panel-header>
-                            <mat-list>
-                                <mat-list-item>
-                                    <button mat-button>1</button>
-                                </mat-list-item>
-                                <mat-list-item>
-                                    <button mat-button>2</button>
-                                </mat-list-item>
-                                <mat-list-item>
-                                    <button mat-button>3</button>
-                                </mat-list-item>
-                            </mat-list>
-                        </mat-expansion-panel>
-                        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle="true">
-                            <mat-expansion-panel-header>
-                                Settings
-                            </mat-expansion-panel-header>
-                            <mat-list>
-                                <mat-list-item>
-                                    <button mat-button>1</button>
-                                </mat-list-item>
-                                <mat-list-item>
-                                    <button mat-button>2</button>
-                                </mat-list-item>
-                                <mat-list-item>
-                                    <button mat-button>3</button>
-                                </mat-list-item>
-                            </mat-list>
-                        </mat-expansion-panel>
-                    </mat-accordion>
-                </div>
-            </div>
-            <div class="row">
-                <button mat-button (click)="sidenav.toggle()">Collapse
-                    <<</button>
-            </div>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Frequently contacted</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Directory</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Duplicates</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Create label</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Settings</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Send feedback</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Help</a>
+                <mat-divider></mat-divider>
+                <a mat-list-item>Go to the old version</a>
+            </mat-nav-list>
         </div>
     </mat-sidenav>
-</mat-sidenav-container>
+</nav>

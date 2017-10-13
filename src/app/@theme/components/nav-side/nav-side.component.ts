@@ -19,14 +19,28 @@ export class NavSideComponent implements OnInit {
      */
     ngOnInit() {
     }
+    /**
+     *
+     *
+     * @param {number} index
+     * @memberof NavSideComponent
+     */
     setStep(index: number) {
         this.step = index;
     }
-
+    /**
+     *
+     *
+     * @memberof NavSideComponent
+     */
     nextStep() {
         this.step++;
     }
-
+    /**
+     *
+     *
+     * @memberof NavSideComponent
+     */
     prevStep() {
         this.step--;
     }

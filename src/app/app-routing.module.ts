@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-// import { CommonModule } from '@angular/common';
-
-// import { IndexComponent } from '../../components/index/index.component';
-// import { UserProfileComponent } from '../../components/user-profile/user-profile.component';
-// import { NotFoundComponent } from './pages/not-found/not-found.component';
-/**
+/*
  * Rotas
  */
 const appRoutes: Routes = [
@@ -13,10 +8,12 @@ const appRoutes: Routes = [
     { path: '', redirectTo: 'pages', pathMatch: 'full' },
     { path: '**', loadChildren: 'app/pages/errors/errors.module#ErrorsModule' },
 ];
+/*
+ * Add hash
+ */
 const config: ExtraOptions = {
     useHash: true,
 };
-
 /**
  * Definição das rotas default do App.
  *
