@@ -19,3 +19,13 @@
 .scrolling-content {
     overflow: auto;
 }
+
+.sidenav-content {
+    background-color: color("grey", "lighten-3");
+    border-right: 1px solid color("grey", "lighten-2");
+    mat-nav-list {
+        margin-top: 10%;
+        position: fixed;
+        width: 20%;
+    }
+}

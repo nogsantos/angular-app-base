@@ -1,9 +1,20 @@
-<app-nav-top (toggleNav)="toggleSideNav($event)"></app-nav-top>
-<mat-sidenav-container>
-    <app-nav-side></app-nav-side>
-
-    <article class="container" fxFlex="3 1 {{percent.content}}%" fxFlexOrder fxFlexOrder.xs="1">
-        <ng-content select="router-outlet"></ng-content>
-        <app-footer></app-footer>
-    </article>
-</mat-sidenav-container>
+<div class="containerX">
+    <div fxLayout="row wrap" class="colored box nopad">
+        <div fxFlex="row">
+            <app-nav-top (toggleNav)="toggleSideNav($event)"></app-nav-top>
+        </div>
+        <div fxFlex="row" fxLayoutAlign="space-evenly stretch">
+            <div fxFlex="{{percent.sidenav}}%" fxHide.lt-sm="true" class="sidenav-content">
+                <app-nav-side [show]="side_show"></app-nav-side>
+            </div>
+            <article fxFlex="{{percent.content}}%">
+                <div class="content-container">
+                    <div class="containerX">
+                        <ng-content select="router-outlet"></ng-content>
+                    </div>
+                </div>
+                <app-footer></app-footer> <!-- sticky-footer -->
+            </article>
+        </div>
+    </div>
+</div>

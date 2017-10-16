@@ -1,6 +1,7 @@
 //Default styles
 *,
-html {
+html,
+body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,8 +15,8 @@ html {
 
 body {
     display: flex;
-    min-height: 100vh;
     flex-direction: column;
+    height: 100vh;
     background-color: $background-color;
     color: $text-color;
 }
@@ -312,20 +313,6 @@ ul.staggered-list li {
         text-align: center;
     }
 } // Footer
-.page-footer {
-    padding-top: 20px;
-    color: $footer-font-color;
-    background-color: $footer-bg-color;
-    .footer-copyright {
-        overflow: hidden;
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-        padding: 10px 0px;
-        color: $footer-copyright-font-color;
-        background-color: $footer-copyright-bg-color; // @extend .light;
-    }
-} // Tables
 table,
 th,
 td {
@@ -875,4 +862,17 @@ th {
 
 .make-text-style {
     color: darken($background-color, 15%);
+}
+
+.content-container {
+    padding: 40px 40px 0 40px;
+    min-height: calc(100vh - 70px);
+}
+
+.footer {
+    border-top: 1px solid color("grey", "lighten-2");
+    background-color: color('grey', 'lighten-3');
+    height: 70px;
+    flex-shrink: 0;
+    padding: 15px;
 }

@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
      * @memberof DashboardComponent
      */
     constructor() {
-        this.title = ``;
+        this.title = `Dashboard`;
     }
     /**
      * INIT

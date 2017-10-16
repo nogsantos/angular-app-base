@@ -1,17 +1,16 @@
 import { NgModule } from '@angular/core';
 
 import { ThemeModule } from '../../@theme/theme.module';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { UserRoutingModule, routedComponents } from './user-routing.module';
 
-import { ErrorsRoutingModule, routedComponents } from './errors-routing.module';
 
 @NgModule({
     imports: [
         ThemeModule,
-        ErrorsRoutingModule
+        UserRoutingModule
     ],
     declarations: [
         ...routedComponents
     ]
 })
-export class ErrorsModule { }
+export class UserModule { }

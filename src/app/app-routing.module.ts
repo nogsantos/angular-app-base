@@ -4,8 +4,9 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
  * Rotas
  */
 const appRoutes: Routes = [
-    { path: 'pages', loadChildren: 'app/pages/pages.module#PagesModule' },
-    { path: '', redirectTo: 'pages', pathMatch: 'full' },
+    { path: 'r', loadChildren: 'app/pages/pages.module#PagesModule' },
+    { path: '', redirectTo: 'r', pathMatch: 'full' },
+    { path: 'error', loadChildren: 'app/pages/errors/errors.module#ErrorsModule' },
     { path: '**', loadChildren: 'app/pages/errors/errors.module#ErrorsModule' },
 ];
 /*

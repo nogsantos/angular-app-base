@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'app-nav-side',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavSideComponent implements OnInit {
     step = 0;
+    @Input() show: boolean;
     /**
      * Creates an instance of NavSideComponent.
      * @memberof NavSideComponent
@@ -18,6 +19,7 @@ export class NavSideComponent implements OnInit {
      * @memberof NavSideComponent
      */
     ngOnInit() {
+        this.show = true;
     }
     /**
      *

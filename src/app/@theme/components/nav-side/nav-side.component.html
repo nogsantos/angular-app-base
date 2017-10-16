@@ -1,28 +1,22 @@
-<nav fxFlex="1 6 20%" fxFlexOrder fxFlexAlign="stretch" fxFlexOrder.xs="2">
-    <mat-sidenav #sidenav mode="side" opened="true" style="width:257px;border-right:1px solid #ccc">
-        <div class="mat-content bgc-grey-50">
-            <mat-nav-list>
-                <div>
-                    dados dos usuário
-                    <br>
-                </div>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Frequently contacted</a>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Directory</a>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Duplicates</a>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Create label</a>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Settings</a>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Send feedback</a>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Help</a>
-                <mat-divider></mat-divider>
-                <a mat-list-item>Go to the old version</a>
-            </mat-nav-list>
-        </div>
-    </mat-sidenav>
-</nav>
+<mat-nav-list *ngIf="show">
+    <div class="center">
+        dados dos usuário
+        <br>
+    </div>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Frequently contacted</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Directory</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Duplicates</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Create label</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Settings</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Send feedback</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Help</a>
+    <mat-divider></mat-divider>
+    <a mat-list-item>Go to the old version</a>
+</mat-nav-list>

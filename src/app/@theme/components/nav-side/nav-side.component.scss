@@ -1,6 +1,9 @@
 mat-sidenav {
-    position: fixed;
-    .mat-content{
+    // position: fixed;
+    border-right: 1px solid #ccc;
+    width: inherit;
+    .mat-content {
+        // width: 100%;
         margin-top: 5rem;
     }
 }
