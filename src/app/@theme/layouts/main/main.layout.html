@@ -8,6 +8,9 @@
                 <app-nav-side [show]="side_show"></app-nav-side>
             </div>
             <article fxFlex="{{percent.content}}%">
+                <mat-toolbar class="white-text deep-purple lighten-1 page-title">
+                    <h2>{{title}}</h2>
+                </mat-toolbar>
                 <div class="content-container">
                     <div class="containerX">
                         <ng-content select="router-outlet"></ng-content>

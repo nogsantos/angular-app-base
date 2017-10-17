@@ -1,13 +1,21 @@
-<mat-toolbar color="primary" class="z-depth-2">
+<mat-toolbar class="z-depth-2 white-text deep-purple lighten-2">
     <div fxFlex>
-        <span>SISTEMA</span>
-        <span>
-            <img src="./assets/images/ic_reorder_{{toggle_icon}}.svg" class="cursor pointer" matTooltip="Visualizar/Ocultar menu" (click)="toggleNavAction()">
+        <span class="material-icon">
+            <button mat-icon-button class="cursor pointer" matTooltip="Menu" (click)="toggleNavAction()">
+                <img src="./assets/images/ic_reorder_{{toggle_icon}}.svg">
+            </button>
         </span>
-        <a mat-button href="#/">Home</a>
-        <a mat-button class="white-text" href="#/r/user/profile">Usuário</a>
+        <span>{{'sistema'|ngCapitalize}}</span>
     </div>
     <div fxLayoutAlign="end">
-        <a mat-button class="white-text" routerLink="/">Sair</a>
+        <a mat-icon-button href="#/">
+            <img src="./assets/images/ic_home.svg" class="cursor pointer" matTooltip="Home">
+        </a>
+        <a mat-icon-button href="#/r/user/profile">
+            <img src="./assets/images/ic_account_circle.svg" class="cursor pointer" matTooltip="Perfil">
+        </a>
+        <a mat-icon-button href="#/">
+            <img src="./assets/images/ic_logout.svg" class="cursor pointer" matTooltip="Sair">
+        </a>
     </div>
 </mat-toolbar>

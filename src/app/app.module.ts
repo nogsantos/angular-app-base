@@ -9,7 +9,6 @@ import { CoreModule } from './@core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
-import 'hammerjs';
 
 @NgModule({
     declarations: [
@@ -22,7 +21,10 @@ import 'hammerjs';
         FormsModule
     ],
     providers: [
-        { provide: APP_BASE_HREF, useValue: '/' },
+        {
+            provide: APP_BASE_HREF,
+            useValue: '/'
+        },
         Title
     ],
     bootstrap: [AppComponent]

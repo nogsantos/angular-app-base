@@ -14,6 +14,7 @@ const appRoutes: Routes = [
  */
 const config: ExtraOptions = {
     useHash: true,
+    enableTracing: false
 };
 /**
  * Definição das rotas default do App.

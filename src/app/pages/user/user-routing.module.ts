@@ -10,6 +10,9 @@ const routes: Routes = [{
     children: [{
         path: 'profile',
         component: UserProfileComponent,
+        data: {
+            title: 'Perfil do usuário'
+        }
     }],
 }];
 

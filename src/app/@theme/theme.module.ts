@@ -63,6 +63,21 @@ import {
 import {
     MainLayoutComponent
 } from './layouts';
+/*
+ * Core services
+ */
+import {
+    EmitterService,
+    MessageService
+} from '../@core/services';
+/*
+ * Hammer
+ */
+import 'hammerjs';
+/*
+ * Pipes
+ */
+import { CapitalizePipe, PluralPipe, RoundPipe, TimingPipe } from './pipes';
 
 const MATERIAL_MODULES = [
     CdkTableModule,
@@ -107,10 +122,22 @@ const COMPONENTS = [
 
 const BASE_MODULES = [CommonModule, FormsModule, ReactiveFormsModule, HttpModule];
 
+const PIPES = [
+    CapitalizePipe,
+    PluralPipe,
+    RoundPipe,
+    TimingPipe,
+];
+
+const CORE_SERVICES = [
+    EmitterService,
+    MessageService
+];
 
 @NgModule({
     imports: [...BASE_MODULES, ...MATERIAL_MODULES],
-    exports: [...BASE_MODULES, ...MATERIAL_MODULES, ...COMPONENTS],
-    declarations: [...COMPONENTS],
+    exports: [...BASE_MODULES, ...MATERIAL_MODULES, ...COMPONENTS, ...PIPES],
+    declarations: [...COMPONENTS, ...PIPES],
+    providers: [...CORE_SERVICES]
 })
 export class ThemeModule { }

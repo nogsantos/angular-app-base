@@ -1,9 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-user',
     template: '<router-outlet></router-outlet>'
 })
-export class UserComponent {
+export class UserComponent implements OnInit {
+    /**
+     * Creates an instance of UserProfileComponent.
+     * @memberof UserProfileComponent
+     */
+    constructor() { }
+    /**
+     *
+     *
+     * @memberof UserProfileComponent
+     */
+    ngOnInit() { }
 
 }
