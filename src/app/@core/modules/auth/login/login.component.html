@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col s12 m12 l12">
+        <div class="center-align">
+            <h1 class="flow-text">Bem vind@!</h1>
+        </div>
+        <mat-card>
+            <img mat-card-image src="https://www.48hourslogo.com/48hourslogo_data/2014/07/12/2014071209213617339.png">
+            <mat-card-content>
+                <div class="container">
+                    <mat-form-field>
+                        <input matInput placeholder="Usuário / Email">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput placeholder="Senha" [type]="hide ? 'password' : 'text'">
+                        <img matSuffix (click)="hide = !hide" src="./assets/images/ic_eye_{{hide ? 'off' : 'on'}}.svg">
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="row">
+                    <div class="col s12 m12 l12 right-align">
+                        <button mat-button>Log In</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12 center">
+                        <a href="#/auth/reset">Esqueci a senha</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12 center">
+                        <a href="#/auth/signup">Novo cadastro</a>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

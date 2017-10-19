@@ -6,7 +6,7 @@ import { MENU_ITEMS } from './pages-menu';
     selector: 'app-pages',
     template: `
     <app-main-layout>
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
     </app-main-layout>
   `,
 })
