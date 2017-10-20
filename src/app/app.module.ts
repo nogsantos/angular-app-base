@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 
+import { ConfigService } from './@core/services';
+
 @NgModule({
     declarations: [
         AppComponent
@@ -25,7 +27,8 @@ import { AppComponent } from './app.component';
             provide: APP_BASE_HREF,
             useValue: '/'
         },
-        Title
+        Title,
+        ConfigService
     ],
     bootstrap: [AppComponent]
 })

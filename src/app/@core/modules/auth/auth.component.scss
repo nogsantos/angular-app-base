@@ -1,0 +1,32 @@
+@import '../../../../assets/styles/components/color';
+@import '../../../../assets/styles/components/variables';
+.auth-container {
+    @media #{$medium-and-up} {
+        width: 40% !important;
+        margin-top: 5rem;
+    }
+    @media #{$small-and-down} {
+        width: 100% !important;
+        margin-top: 5%;
+    }
+}
+
+div[fxLayout]{
+    min-height: 100vh;
+    background-image: url('../../../../assets/images/auth_back.jpg');
+    background-repeat:no-repeat;
+    -webkit-background-size:cover;
+    -moz-background-size:cover;
+    -o-background-size:cover;
+    background-size:cover;
+    background-position:center;
+    background-color: color('blue', 'lighten-4');
+    @media #{$medium-and-up} {
+        min-width: 100vh;
+    }
+    @media #{$small-and-down} {
+        min-width: 100%;
+    }
+}
+
+

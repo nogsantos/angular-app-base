@@ -68,7 +68,8 @@ import {
  */
 import {
     EmitterService,
-    MessageService
+    MessageService,
+    LogService
 } from '../@core/services';
 /*
  * Hammer
@@ -131,7 +132,8 @@ const PIPES = [
 
 const CORE_SERVICES = [
     EmitterService,
-    MessageService
+    MessageService,
+    LogService
 ];
 
 @NgModule({
