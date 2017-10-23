@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
+
+import { AuthGuardService as AuthGuard } from './@core/services/auth-guard.service';
 /*
  * Rotas
  */
@@ -9,7 +11,7 @@ const appRoutes: Routes = [
         loadChildren: 'app/@core/modules/auth/auth.module#AuthModule'
     },
     { path: '', redirectTo: '', pathMatch: 'full' },
-    { path: '', loadChildren: 'app/pages/pages.module#PagesModule' },
+    { path: '', loadChildren: 'app/pages/pages.module#PagesModule', canActivate: [AuthGuard] },
     { path: 'error', loadChildren: 'app/pages/errors/errors.module#ErrorsModule' },
     { path: '**', loadChildren: 'app/pages/errors/errors.module#ErrorsModule' },
 ];
