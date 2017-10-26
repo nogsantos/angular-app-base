@@ -23,7 +23,8 @@ export class Storage {
      * @memberOf Storage
      */
     get(key: string): boolean {
-        return (localStorage.getItem(key) !== null && sessionStorage.getItem(key) !== null) && (localStorage.getItem(key) === sessionStorage.getItem(key));
+        return (localStorage.getItem(key) !== null && sessionStorage.getItem(key) !== null) &&
+            (localStorage.getItem(key) === sessionStorage.getItem(key));
     }
     /**
      * Seta os dados no storage local e session

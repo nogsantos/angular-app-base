@@ -10,7 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 
-import { ConfigService } from './@core/services';
+import { ConfigService, AuthGuardService, AuthService, Storage } from './@core/services';
 
 @NgModule({
     declarations: [
@@ -28,7 +28,10 @@ import { ConfigService } from './@core/services';
             useValue: '/'
         },
         Title,
-        ConfigService
+        ConfigService,
+        AuthGuardService,
+        AuthService,
+        Storage
     ],
     bootstrap: [AppComponent]
 })
