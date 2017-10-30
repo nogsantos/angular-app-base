@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuardService } from '../@core/services';
 
 const routes: Routes = [{
     path: '',
@@ -12,7 +13,8 @@ const routes: Routes = [{
         component: DashboardComponent,
         data: {
             title: 'Dashboard'
-        }
+        },
+        canActivate: [AuthGuardService]
     },
     {
         path: 'user',

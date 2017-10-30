@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { UserComponent } from './user.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuardService } from '../../@core/services';
 
 const routes: Routes = [{
     path: '',
@@ -10,6 +11,7 @@ const routes: Routes = [{
     children: [{
         path: 'profile',
         component: UserProfileComponent,
+        canActivate: [AuthGuardService],
         data: {
             title: 'Perfil do usuário'
         }

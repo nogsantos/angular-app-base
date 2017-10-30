@@ -97,6 +97,38 @@ export class DatabaseService {
         });
     }
     /**
+     * Get all registers
+     *
+     * @returns {Promise<any>}
+     * @memberof DatabaseService
+     */
+    async getAll(): Promise<any> {
+        return await this.db.allDocs({
+            include_docs: true,
+            attachments: true
+        }).then(result => {
+            return Promise.resolve(result);
+        }).catch(error => {
+            return Promise.reject(error);
+        });
+    }
+    /**
+     * Save an attachment
+     *
+     * @param {string} doc_id
+     * @param {string} attachment_id
+     * @param {*} attachment
+     * @returns {Promise<any>}
+     * @memberof DatabaseService
+     */
+    attach(doc_id: string, attachment_id: string, attachment: any): Promise<any> {
+        return this.db.putAttachment(doc_id, attachment_id, attachment, 'text/plain').then(result => {
+            return Promise.resolve(result);
+        }).catch(error => {
+            return Promise.reject(error);
+        });
+    }
+    /**
      * Recupera um documento Asyncrono
      *
      * @param {string} document nome do documento a ser recuperado.
@@ -151,22 +183,4 @@ export class DatabaseService {
             return Promise.reject(error);
         });
     }
-    /**
-     * Localiza e atualiza todos os registros
-     *
-     * @param {(Object | any)} selector
-     * @returns {Promise<any>}
-     *
-     * @memberof WebDataBase
-     */
-    // findAndUpdateAll(selector: Object | any): Promise<any> {
-    //     return this.db.allDocs({
-    //         include_docs: true,
-    //         attachments: true
-    //     }).then(result => {
-    //         console.log(result);
-    //     }).catch(error => {
-    //         console.log(error);
-    //     });
-    // }
 }

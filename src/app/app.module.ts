@@ -10,7 +10,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
 
-import { ConfigService, AuthGuardService, AuthService, Storage } from './@core/services';
+import {
+    ConfigService,
+    AuthGuardService,
+    AuthService,
+    Storage,
+    LogService,
+    DatabaseService
+} from './@core/services';
+
+const SERVICES = [
+    Title,
+    ConfigService,
+    AuthGuardService,
+    AuthService,
+    Storage,
+    LogService,
+    DatabaseService,
+    { provide: APP_BASE_HREF, useValue: '/' }
+];
 
 @NgModule({
     declarations: [
@@ -22,17 +40,7 @@ import { ConfigService, AuthGuardService, AuthService, Storage } from './@core/s
         BrowserAnimationsModule,
         FormsModule
     ],
-    providers: [
-        {
-            provide: APP_BASE_HREF,
-            useValue: '/'
-        },
-        Title,
-        ConfigService,
-        AuthGuardService,
-        AuthService,
-        Storage
-    ],
+    providers: [...SERVICES],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
