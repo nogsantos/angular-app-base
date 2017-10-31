@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
 
 import { AuthService } from './auth.service';
+import { DatabaseService } from './database.service';
 import { Storage } from './storage.service';
 /**
  *
@@ -12,6 +13,8 @@ import { Storage } from './storage.service';
  */
 @Injectable()
 export class AuthGuardService implements CanActivate {
+    private is_authenticated: boolean;
+    private count = 0;
     /**
      * Creates an instance of AuthGuardService.
      * @param {AuthService} auth
@@ -19,9 +22,10 @@ export class AuthGuardService implements CanActivate {
      * @memberof AuthGuardService
      */
     constructor(
-        public auth: AuthService,
+        private auth: AuthService,
         private storage: Storage,
-        public router: Router
+        private router: Router,
+        private db: DatabaseService
     ) { }
     /**
      * @todo
@@ -30,50 +34,61 @@ export class AuthGuardService implements CanActivate {
      * @memberof AuthGuardService
      */
     canActivate(): boolean {
-        try {
-            Promise.resolve(this.auth.isAuthenticated());
-            return true;
-        } catch (error) {
-            Promise.reject(this.auth.isAuthenticated());
+        this.getAuthenticated();
+        if (!this.is_authenticated) {
+            this.router.navigate(['auth/login']);
             return false;
+        } else {
+            return true;
         }
-        // return this.checkAuth();
-        // p = this.auth.isAuthenticated();
-        // console.log();
-        // if (!p) {
-        //     console.log('false');
-        //     this.router.navigate(['auth/login']);
-        //     return false;
-        // } else {
-        //     console.log('true');
-        //     return true;
-        // }
-        // return true;
     }
 
-    private async checkAuth() {
-        try {
-            return await this.auth.isAuthenticated().then(resolve => {
-                if (resolve) {
-                    resolve.forEach(user => {
-                        console.log(user.doc.username);
-                        const username = user.doc.username;
-                        if (this.storage.get(btoa(username))) {
-                            // console.log('true', '1');
-                            return Promise.resolve(true);
-                        } else {
-                            // console.log('false', '1');
-                            return Promise.reject(false);
-                        }
-                    });
-                    return Promise.resolve(true);
-                }
-            }).catch(reject => {
-                // console.log(reject);
+    getAuthenticated() {
+        this.db.getAll().then(result => {
+            if (result.rows.length > 0) {
+                result.rows.forEach(row => {
+                    ++this.count;
+                    console.log(this.storage.get(btoa(row.doc.username)));
+                    if (this.storage.get(btoa(row.doc.username))) {
+                        this.is_authenticated = true;
+                        console.log(btoa(row.doc.username));
+                        console.log('count t', this.count);
+                        return;
+                    }
+                });
+                console.log('count f', this.count);
+                this.is_authenticated = false;
+                return;
+            } else {
+                this.is_authenticated = false;
                 return Promise.resolve(false);
-            });
-        } catch (error) {
-            return Promise.resolve(false);
-        }
+            }
+        }).catch(error => {
+            return Promise.reject(error);
+        });
+        // this.auth.isAuthenticated().then(result => {
+        //     if (result.rows.length > 0) {
+        //         result.rows.forEach(row => {
+        //             console.log(this.storage.get(btoa(row.doc.username)));
+        //             if (this.storage.get(btoa(row.doc.username))) {
+        //                 this.is_authenticated = true;
+        //                 console.log(btoa(row.doc.username));
+        //                 return;
+        //             } else {
+        //                 console.log(btoa(row.doc.username));
+        //                 this.is_authenticated = false;
+        //                 return;
+        //             }
+        //         });
+        //     } else {
+        //         this.is_authenticated = false;
+        //         return Promise.resolve(false);
+        //     }
+        // }).catch(error => {
+        //     this.is_authenticated = false;
+        //     return Promise.resolve(false);
+        // });
     }
+
 }
+

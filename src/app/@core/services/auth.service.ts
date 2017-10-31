@@ -24,25 +24,9 @@ export class AuthService {
      */
     isAuthenticated(): Promise<any> {
         return this.db.getAll().then(result => {
-            if (result.rows.length > 0) {
-                return result.rows;
-                // result.rows.forEach(user => {
-                //     const username = user.doc.username;
-                //     if (this.storage.get(btoa(username))) {
-                //         console.log('true', '1');
-                //         return Promise.resolve(true);
-                //     } else {
-                //         console.log('false', '1');
-                //         return Promise.reject(false);
-                //     }
-                // });
-            } else {
-                return false;
-            }
+            return Promise.resolve(result);
         }).catch(error => {
-            return false;
+            return Promise.reject(error);
         });
-        // console.log('check', check);
-        // return check;
     }
 }

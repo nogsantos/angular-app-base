@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { HttpService, LogService, Storage, DatabaseService } from '../../../../@core/services';
+import { HttpService, LogService, Storage, DatabaseService, AuthGuardService } from '../../../../@core/services';
 import env from '../../../../@core/services/env';
 import { User } from '../user';
 import constante from '../constants';
@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
         private log: LogService,
         private storage: Storage,
         private db: DatabaseService,
+        private auth: AuthGuardService,
         private router: Router
     ) { }
     /**
@@ -55,7 +56,12 @@ export class LoginComponent implements OnInit {
                     this.db.put(user.payloadObj);
                 });
                 this.storage.set(btoa(user.payloadObj.username), response.key);
-                this.router.navigate(['dashboard']);
+                // if (this.auth.canActivate()) {
+                    this.router.navigate(['dashboard']);
+                // }
+                // this.auth.getAuthenticated().then(auth => {
+                //     console.log('auth', auth);
+                // });
             }
         }).catch(error => {
             this.log.error(error);
