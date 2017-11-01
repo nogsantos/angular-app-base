@@ -1,0 +1,49 @@
+.nav {
+    /*
+     * Nav topo
+     */
+    &.top {}
+    /*
+     * Nav lateral
+     */
+    &.side {
+        &.content {
+            background-color: color("grey", "lighten-3");
+            border-right: 1px solid color("grey", "lighten-2");
+            mat-nav-list {
+                margin-top: 6%;
+                position: fixed;
+                width: 20%;
+            }
+            .nav-side-links {
+                max-height: calc(75vh - 70px);
+                overflow-y: hidden;
+            }
+            .nav-side-links:hover {
+                overflow-y: auto;
+            }
+            /*
+             * Removendo o padding do materialize para o nav
+             */
+            .row {
+                .col {
+                    padding: 0 !important;
+                }
+            }
+        }
+        /*
+         * scroll style
+         */
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #F5F5F5;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: color("grey", "darken-1");
+        }
+    }
+}

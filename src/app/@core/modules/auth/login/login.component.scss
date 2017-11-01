@@ -19,3 +19,17 @@ input.right-align::-webkit-inner-spin-button {
 h1 {
     color: #FFFFFF;
 }
+/*
+ * Posicionamento do loading na tela
+ */
+.col {
+    &.s8 {
+        &.m8 {
+            &.l8 {
+                &.right-align {
+                    padding-top: 2% !important;
+                }
+            }
+        }
+    }
+}

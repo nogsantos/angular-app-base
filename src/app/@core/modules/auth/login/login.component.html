@@ -21,8 +21,13 @@
                 </mat-card-content>
                 <mat-card-actions>
                     <div class="row">
-                        <div class="col s12 m12 l12 right-align">
-                            <button mat-raised-button [disabled]="authForm.form.invalid" (click)="autenticate()" color="primary">Log In</button>
+                        <div class="col s8 m8 l8 right-align">
+                            <img *ngIf="loading" src="./assets/images/ic_loader.gif">
+                        </div>
+                        <div class="col s4 m4 l4">
+                            <span class="left">
+                                <button mat-raised-button [disabled]="authForm.form.invalid" (click)="autenticate()" color="primary">Acessar</button>
+                            </span>
                         </div>
                     </div>
                     <div class="row">

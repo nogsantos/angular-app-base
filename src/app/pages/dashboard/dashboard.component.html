@@ -1,7 +1,18 @@
-<div fxLayout="row wrap" class="colored box nopad">
-    <div fxFlex="row" fxLayoutAlign="space-evenly stretch">
-        <div class="col s12 m12 l12 center">
-            <div *ngFor="let item of [1,2,3,4,5,6,7,8,9,10,11,11,12,13,14,15,16,17,19,20,20,20,20,02,20,20,20,20,20,20,20,20,20,20,20,20]">{{item}}</div>
+<div class="row">
+        <div class="col s12 m12 l6 center">
+            <span class="flow-text">A</span>
+        </div>
+        <div class="col s12 m12 l6 center">
+            <span class="flow-text">B</span>
+        </div>
+    </div>
+<div *ngFor="let item of [1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5,1,2,3,4,5]">
+    <div class="row">
+        <div class="col s12 m12 l6 white-text center" class="card-panel blue darken-{{item}}">
+            <span class="flow-text">{{item}}</span>
+        </div>
+        <div class="col s12 m12 l6 white-text center" class="card-panel green darken-{{item}}">
+            <span class="flow-text">{{item}}</span>
         </div>
     </div>
 </div>

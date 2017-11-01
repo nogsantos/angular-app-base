@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { ConfigService } from './config.service';
+import { LogService } from './log.service';
 
 @Injectable()
 export class HttpService {
@@ -14,6 +15,7 @@ export class HttpService {
      */
     constructor(
         private http: Http,
+        public log: LogService,
         private config: ConfigService
     ) { }
     /**
@@ -68,8 +70,7 @@ export class HttpService {
      * @memberof HttpService
      */
     private handleError(error: any): Promise<any> {
-        alert(`An error occurred\n ${error}`);
-        return Promise.reject(error.message || error);
+        return Promise.reject(error);
     }
 
 }

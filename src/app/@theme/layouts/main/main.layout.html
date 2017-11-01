@@ -4,7 +4,7 @@
             <app-nav-top (toggleNav)="toggleSideNav($event)"></app-nav-top>
         </div>
         <div fxFlex="row" fxLayoutAlign="space-evenly stretch">
-            <div fxFlex="{{percent.sidenav}}%" fxHide.lt-sm="true" class="sidenav-content">
+            <div fxFlex="{{percent.sidenav}}%" fxHide.lt-sm="true" class="nav side content">
                 <app-nav-side [show]="side_show"></app-nav-side>
             </div>
             <article fxFlex="{{percent.content}}%">

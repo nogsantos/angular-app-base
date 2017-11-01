@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import {
     ConfigService,
     AuthGuardService,
-    AuthService,
     Storage,
     LogService,
     DatabaseService
@@ -23,7 +22,6 @@ const SERVICES = [
     Title,
     ConfigService,
     AuthGuardService,
-    AuthService,
     Storage,
     LogService,
     DatabaseService,

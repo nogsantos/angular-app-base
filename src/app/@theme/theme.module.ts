@@ -70,7 +70,9 @@ import {
     EmitterService,
     MessageService,
     LogService,
-    DatabaseService
+    DatabaseService,
+    Storage,
+    Md5Service
 } from '../@core/services';
 /*
  * Hammer
@@ -135,7 +137,9 @@ const CORE_SERVICES = [
     EmitterService,
     MessageService,
     LogService,
-    DatabaseService
+    DatabaseService,
+    Storage,
+    Md5Service
 ];
 
 @NgModule({

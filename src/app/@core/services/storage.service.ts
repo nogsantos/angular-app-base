@@ -22,9 +22,19 @@ export class Storage {
      *
      * @memberOf Storage
      */
-    get(key: string): boolean {
+    check(key: string): boolean {
         return (localStorage.getItem(key) !== null && sessionStorage.getItem(key) !== null) &&
             (localStorage.getItem(key) === sessionStorage.getItem(key));
+    }
+    /**
+     * Retorna o valor do item da sessão
+     *
+     * @param {string} key
+     * @returns {string}
+     * @memberof Storage
+     */
+    session(key: string): string {
+        return sessionStorage.getItem(key);
     }
     /**
      * Seta os dados no storage local e session
@@ -48,7 +58,6 @@ export class Storage {
     remove(key: string): void {
         localStorage.clear();
         sessionStorage.removeItem(key);
-        sessionStorage.removeItem('username');
     }
     /**
      * Verifica se há suporte para storage no navegador
