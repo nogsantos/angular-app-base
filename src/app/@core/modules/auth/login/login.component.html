@@ -15,7 +15,7 @@
                         </mat-form-field>
                         <mat-form-field>
                             <input matInput [(ngModel)]="user.password" name="password" #password="ngModel" placeholder="Senha" [type]="hide ? 'password' : 'text'" required>
-                            <img matSuffix (click)="hide = !hide" src="./assets/images/ic_eye_{{hide ? 'off' : 'on'}}.svg">
+                            <img matSuffix (mousedown)="hide = false" (mouseup)="hide = true" src="./assets/images/ic_eye_{{hide ? 'off' : 'on'}}.svg" class="cursor pointer">
                         </mat-form-field>
                     </div>
                 </mat-card-content>
