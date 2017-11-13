@@ -100,4 +100,8 @@ export class LoginComponent implements OnInit {
                 });
         });
     }
+
+    test() {
+        return 'ol';
+    }
 }

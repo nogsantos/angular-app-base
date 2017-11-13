@@ -20,7 +20,7 @@ div[fxLayout]{
     -o-background-size:cover;
     background-size:cover;
     background-position:center;
-    background-color: color('blue', 'lighten-4');
+    background-color: color('grey', 'lighten-4');
     @media #{$medium-and-up} {
         min-width: 100vh;
     }

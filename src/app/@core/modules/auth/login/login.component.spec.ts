@@ -9,8 +9,7 @@ describe('LoginComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [LoginComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {
@@ -19,7 +18,7 @@ describe('LoginComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
+    it('should return a string', () => {
+        expect(typeof component.test() === 'string').toBeTruthy();
     });
 });
