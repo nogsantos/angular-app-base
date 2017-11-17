@@ -26,11 +26,7 @@ export class ResetPasswordComponent implements OnInit {
     solicitated: boolean;
     response: boolean;
     user = {
-        name: null,
-        username: null,
         email: null,
-        password: null,
-        password_confirmation: null
     };
     /**
      * Creates an instance of ResetPasswordComponent.
@@ -70,6 +66,7 @@ export class ResetPasswordComponent implements OnInit {
                 this.loading = false;
                 this.solicitated = true;
                 this.response = false;
+                this.user.email = null;
                 this.log.error(error);
             });
         } else {
@@ -88,7 +85,16 @@ export class ResetPasswordComponent implements OnInit {
      */
     timerMessage() {
         setTimeout(() => {
-            this.solicitated = false;
+            this.resetForm();
         }, 10000);
+    }
+    /**
+     *
+     *
+     * @memberof ResetPasswordComponent
+     */
+    resetForm() {
+        this.solicitated = false;
+        this.user.email = null;
     }
 }

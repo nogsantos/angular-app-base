@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AccountConfirmComponent } from './account-confirm/account-confirm.component';
+import { PasswordResetConfirmateComponent } from './password-reset-confirmate/password-reset-confirmate';
 
 const routes: Routes = [{
     path: '',
@@ -40,6 +41,14 @@ const routes: Routes = [{
                 title: 'Account confirmation'
             }
         },
+        {
+            path: 'password-reset-confirmate/:token',
+            component: PasswordResetConfirmateComponent,
+            data: {
+                title: 'Reset password'
+            }
+        },
+        { path: '**', redirectTo: 'login', pathMatch: 'full' },
     ],
 }];
 
@@ -61,4 +70,5 @@ export const routedComponents = [
     SignupComponent,
     ResetPasswordComponent,
     AccountConfirmComponent,
+    PasswordResetConfirmateComponent,
 ];
