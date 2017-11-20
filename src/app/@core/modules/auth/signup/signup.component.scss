@@ -1,0 +1,32 @@
+@import '../../../../../assets/styles/components/color';
+@import '../../../../../assets/styles/components/variables';
+.signup-container {
+    width: 90%;
+    position: absolute;
+    left: 5%;
+    top: 0;
+    .page-header {
+        margin-bottom: 1.5rem;
+    }
+}
+
+.section {
+    p {
+        margin: 1rem 0 1rem 0 !important;
+    }
+}
+
+.signup-form-container {
+    display: flex;
+    flex-direction: column;
+    &>* {
+        width: 100%;
+    }
+}
+
+@media #{$large-and-up} {
+    form {
+        position: fixed;
+        width: 37%;
+    }
+}

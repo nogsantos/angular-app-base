@@ -1,3 +1,121 @@
-<p>
-  signup works!
-</p>
+<div class="signup-container">
+    <div class="page-header">
+        <div class="section">
+            <h1 class="flow-text">Crie sua conta</h1>
+        </div>
+        <div class="divider"></div>
+    </div>
+    <div class="row">
+        <!--termo-->
+        <div class="col s12 m12 l7">
+            <mat-card>
+                <mat-card-title>
+                    <h5 class="flow-text">Termos de uso e serviços - (Beta)</h5>
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="section">
+                        <h5 class="text-flow">Conta</h5>
+                        <p>Para acessar os serviços, você deverá criar uma conta no Site, fornecendo um endereço de e-mail válido e de sua propriedade para validação do cadastro.</p>
+                        <p>Você apenas conseguirá utilizar os serviços de forma adequada, se estiver usando:</p>
+                        <ol type="a" class="browser-default">
+                            <li>PC Windows, Mac ou Linux;</li>
+                            <li>acesso a Internet com velocidade maior que 1MB/s;</li>
+                            <li>navegadores web:
+                                <ul class="browser-default">
+                                    <li>Google Chrome versão 20 ou superior</li>
+                                    <li>Mozilla Firefox versão 13 ou superior;</li>
+                                    <li>Safari versão 6 ou superior</li>
+                                    <li>Internet Explorer versão 10 ou superior;</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <h5>Política de privacidade</h5>
+                        <p>Não divulgamos seus dados pessoais ou financeiros para fins comerciais.</p>
+                        <p>Apenas teremos acesso aos seus dados, caso você entre em contato conosco para suporte técnico.</p>
+                        <p>Algumas informações são coletadas pelos nossos servidores, como seu endereço de IP (Internet Protocol), informações de data e local de acesso, entre outros. Esses dados não são usados por nós para nenhum fim, a não ser o de controle de fluxo de tráfego.</p>
+                        <p>Apenas em caso de requisição judicial ou de autoridade competente, iremos fornecer seus dados.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <h5>Sua responsabilidade</h5>
+                        <p>Você será responsável por manter sua senha segura. </p>
+                        <p>O Conteúdo por você postado é de sua responsabilidade, assim como todos os atos por você praticados.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <h5>Propriedade intelectual</h5>
+                        <p>Os elementos e ferramentas do Site são de nossa titularidade ou são licenciados por nós, nos termos da legislação vigente. </p>
+                        <p>A utilização de qualquer elemento ou ferramenta do Site apenas poderá ser feito com nossa concordância por escrito.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="section">
+                        <h5>Disposições finais</h5>
+                        <p>Este T&C é regido pelas leis brasileiras. Eventuais controvérsias existentes em relação a este T&C ou ao uso do Site serão solucionados entre Você e o desenvolvedor no Foro da Comarca de Goiânia/GO, mesmo que haja outro mais privilegiado. </p>
+                        <p>Caso algum item deste T&C venha a ser declarado nulo ou não aplicável, os outros termos continuarão se aplicando e permanecerão em vigor e efeito.</p>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <!--formulario-->
+        <div class="col s12 m12 l5">
+            <form #signupForm="ngForm" autocomplete="off">
+                <mat-card>
+                    <mat-card-title>
+                        <h5 class="flow-text">Cadastro</h5>
+                    </mat-card-title>
+                    <mat-card-content>
+                        <div class="signup-form-container">
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="user.name" name="name" #name="ngModel" placeholder="Nome" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="user.username" name="username" #username="ngModel" placeholder="Nome de usuário" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="user.email" name="email" #email="ngModel" placeholder="Email" type="email" required>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="user.password" name="password" (keyup)="checkPasswords()" #password="ngModel" placeholder="Senha" [type]="hide_password ? 'password' : 'text'" required>
+                                <img matSuffix (mousedown)="hide_password = false" (mouseup)="hide_password = true" src="./assets/images/ic_eye_{{hide_password ? 'off' : 'on'}}.svg" class="cursor pointer">
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input matInput [(ngModel)]="user.password_confirmation" name="passwordConfirmation" (keyup)="checkPasswords()" #passwordConfirmation="ngModel" placeholder="Confirmar senha" [type]="hide_password_confirm ? 'password' : 'text'" required>
+                                <img matSuffix (mousedown)="hide_password_confirm = false" (mouseup)="hide_password_confirm = true" src="./assets/images/ic_eye_{{hide_password_confirm ? 'off' : 'on'}}.svg" class="cursor pointer">
+                            </mat-form-field>
+                        </div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <mat-checkbox [(ngModel)]="use_term_accepted" name="use_term_accepted" color="primary" require>Aceito os termos de uso e serviços.</mat-checkbox>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s6 m6 l6">
+                                <span class="left">
+                                    <a href="#/auth/login" mat-button>Cancelar</a>
+                                </span>
+                            </div>
+                            <div class="col s6 m6 l6">
+                                <span class="right">
+                                    <img src="./assets/images/ic_loader.gif" alt="Carregando..." class="reset-loading" *ngIf="loading">
+                                    <button mat-raised-button [disabled]="signupForm.invalid || !use_term_accepted" (click)="send()" color="primary">Cadastrar</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="solicitated&&response">
+                            <div class="col s12 m12 l12">
+                                <div class="card-panel white-text text-darken-1 green lighten-2 flow-text text-center">
+                                    Redefini&ccedil;&atilde;o da senha enviada com sucesso para o e-mail informado. Acesse essa conta para mais instru&ccedil;&otilde;es.
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+        </div>
+    </div>
+</div>
