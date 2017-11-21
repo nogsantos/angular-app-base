@@ -13,12 +13,14 @@ import {
 } from '../../../../@core/services';
 import env from '../../../../@core/services/env';
 import constante from '../constants';
+import { AuthServices } from '../auth-services';
 import $ from 'jquery';
 
 @Component({
     selector: 'app-password-reset-confirmate',
     templateUrl: './password-reset-confirmate.html',
-    styleUrls: ['./password-reset-confirmate.scss']
+    styleUrls: ['./password-reset-confirmate.scss'],
+    providers: [AuthServices]
 })
 export class PasswordResetConfirmateComponent implements OnInit, OnDestroy {
     hide_password: boolean; // Ocultar ou apresentar a senha para o usuário
@@ -46,7 +48,8 @@ export class PasswordResetConfirmateComponent implements OnInit, OnDestroy {
         private auth: AuthGuardService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private services: AuthServices
     ) { }
     /**
      *
@@ -88,7 +91,7 @@ export class PasswordResetConfirmateComponent implements OnInit, OnDestroy {
         this.user.password = $.trim(this.user.password);
         this.user.password_confirmation = $.trim(this.user.password_confirmation);
         if ((this.user.reset_digest !== '' && this.user.password !== '' && this.user.password_confirmation !== '')
-            && this.passwordsAreEquals()) {
+            && this.services.checkPasswords(this.user.password, this.user.password_confirmation)) {
             this.loading = true;
             this.request.send(`/user/password-reset-confirm`, null, { user: this.user }).then(response => {
                 this.loading = false;
@@ -143,19 +146,12 @@ export class PasswordResetConfirmateComponent implements OnInit, OnDestroy {
      * @memberof PasswordResetConfirmateComponent
      */
     checkPasswords() {
-        this.user.password = $.trim(this.user.password);
-        this.user.password_confirmation = $.trim(this.user.password_confirmation);
-        if (this.user && this.user.password !== '' && this.user.password_confirmation !== '') {
-            this.password_confirmation = this.passwordsAreEquals();
+        if (this.user &&
+            this.user.password !== '' &&
+            this.user.password_confirmation !== '' &&
+            this.user.password !== null &&
+            this.user.password_confirmation !== null) {
+            this.password_confirmation = this.services.checkPasswords(this.user.password, this.user.password_confirmation);
         }
-    }
-    /**
-     *
-     *
-     * @returns
-     * @memberof ConfirmPasswordReset
-     */
-    passwordsAreEquals() {
-        return (this.user.password === this.user.password_confirmation);
     }
 }

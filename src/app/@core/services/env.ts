@@ -19,5 +19,13 @@ export default {
                 help: 7000
             }
         }
+    },
+    media_query_screen: {
+        small_up: 601,
+        medium_up: 993,
+        large_up: 1201,
+        small: 600,
+        medium: 992,
+        large: 1200,
     }
 };

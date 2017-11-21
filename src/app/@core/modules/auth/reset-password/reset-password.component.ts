@@ -11,9 +11,8 @@ import {
     AuthGuardService
 } from '../../../../@core/services';
 import env from '../../../../@core/services/env';
+import regex from '../../../../@core/services/regex';
 import constante from '../constants';
-
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 @Component({
     selector: 'app-reset-password',
@@ -47,7 +46,7 @@ export class ResetPasswordComponent implements OnInit {
      */
     ngOnInit() {
         this.loading = false;
-        this.formControl = new FormControl('', [Validators.required, Validators.pattern(EMAIL_REGEX)]);
+        this.formControl = new FormControl('', [Validators.required, Validators.pattern(regex.email)]);
     }
     /**
      *

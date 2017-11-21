@@ -12,22 +12,24 @@ import {
     AuthGuardService
 } from '../../../../@core/services';
 import env from '../../../../@core/services/env';
+import regex from '../../../../@core/services/regex';
+import { AuthServices } from '../../../../@core/modules/auth/auth-services';
 import constante from '../constants';
 import $ from 'jquery';
-
-const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
-    styleUrls: ['./signup.component.scss']
+    styleUrls: ['./signup.component.scss'],
+    providers: [AuthServices]
 })
 export class SignupComponent implements OnInit {
     hide_password: boolean; // Ocultar ou apresentar a senha para o usuário
     hide_password_confirm: boolean; // Ocultar ou apresentar a senha para o usuário
     use_term_accepted: boolean;
     loading: boolean;
-    formControl: FormControl;
+    password_confirmate: boolean;
+    // formControl: FormControl;
     user = {
         name: null,
         username: null,
@@ -55,7 +57,8 @@ export class SignupComponent implements OnInit {
         private auth: AuthGuardService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
-        private snackBar: MatSnackBar
+        private snackBar: MatSnackBar,
+        private services: AuthServices
     ) { }
     /**
      *
@@ -66,7 +69,8 @@ export class SignupComponent implements OnInit {
         this.hide_password = true;
         this.hide_password_confirm = true;
         this.use_term_accepted = false;
-        this.formControl = new FormControl('', [Validators.required, Validators.pattern(EMAIL_REGEX)]);
+        this.services.onPageScroll('form', 'm', 'fixit', 136);
+        this.validates();
     }
     /**
      *
@@ -82,6 +86,42 @@ export class SignupComponent implements OnInit {
      * @memberof SignupComponent
      */
     send() {
-        console.log(this.use_term_accepted);
+        console.log(this.user);
+    }
+    /**
+     *
+     *
+     * @memberof SignupComponent
+     */
+    validates() {
+        this.user.name = new FormControl('', [Validators.required]);
+        this.user.username = new FormControl('', [Validators.required]);
+        this.user.email = new FormControl('', [Validators.required, Validators.pattern(regex.email)]);
+        this.user.password = new FormControl('', [Validators.required]);
+        this.user.password_confirmate = new FormControl('', [Validators.required]);
+    }
+    /**
+     *
+     *
+     * @returns
+     * @memberof SignupComponent
+     */
+    getErrorMessage() {
+        return this.user.email.hasError('required') ? 'You must enter a value' :
+            this.user.email.hasError('email') ? 'Not a valid email' : '';
+    }
+    /**
+     * Verifica se as senhas digitadas são iguais
+     *
+     * @memberof SignupComponent
+     */
+    checkPasswords() {
+        if (this.user &&
+            this.user.password !== '' &&
+            this.user.password_confirmate !== '' &&
+            this.user.password !== null &&
+            this.user.password_confirmate !== null) {
+            this.password_confirmate = this.services.checkPasswords(this.user.password, this.user.password_confirmate);
+        }
     }
 }
