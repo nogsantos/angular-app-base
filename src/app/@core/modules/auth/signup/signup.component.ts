@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material';
@@ -26,17 +26,9 @@ import $ from 'jquery';
 export class SignupComponent implements OnInit {
     hide_password: boolean; // Ocultar ou apresentar a senha para o usuário
     hide_password_confirm: boolean; // Ocultar ou apresentar a senha para o usuário
-    use_term_accepted: boolean;
     loading: boolean;
     password_confirmate: boolean;
-    // formControl: FormControl;
-    user = {
-        name: null,
-        username: null,
-        email: null,
-        password: null,
-        password_confirmate: null
-    };
+    user: FormGroup;
     /**
      * Creates an instance of SignupComponent.
      * @param {HttpService} request
@@ -68,7 +60,6 @@ export class SignupComponent implements OnInit {
     ngOnInit() {
         this.hide_password = true;
         this.hide_password_confirm = true;
-        this.use_term_accepted = false;
         this.services.onPageScroll('form', 'm', 'fixit', 136);
         this.validates();
     }
@@ -86,7 +77,7 @@ export class SignupComponent implements OnInit {
      * @memberof SignupComponent
      */
     send() {
-        console.log(this.user);
+        const user = Object.assign(this.user['_value']);
     }
     /**
      *
@@ -94,34 +85,39 @@ export class SignupComponent implements OnInit {
      * @memberof SignupComponent
      */
     validates() {
-        this.user.name = new FormControl('', [Validators.required]);
-        this.user.username = new FormControl('', [Validators.required]);
-        this.user.email = new FormControl('', [Validators.required, Validators.pattern(regex.email)]);
-        this.user.password = new FormControl('', [Validators.required]);
-        this.user.password_confirmate = new FormControl('', [Validators.required]);
+        this.user = new FormGroup({
+            name: new FormControl('', [Validators.required]),
+            username: new FormControl('', [Validators.required]),
+            email: new FormControl('', [Validators.required, Validators.pattern(regex.email)]),
+            password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            password_confirmate: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            term_accepted: new FormControl(false, [Validators.requiredTrue])
+        }, this.passwordMatchValidator);
     }
     /**
+     * Valida se as senhas informadas são iguais
      *
+     * @param {FormGroup} g
+     * @returns
+     * @memberof SignupComponent
+     */
+    passwordMatchValidator(g: FormGroup) {
+        return g.get('password').value === g.get('password_confirmate').value ? null : { 'mismatch': true };
+    }
+    /**
+     * Retorna a mensagem de erro de acordo com o erro relatado
      *
      * @returns
      * @memberof SignupComponent
      */
-    getErrorMessage() {
-        return this.user.email.hasError('required') ? 'You must enter a value' :
-            this.user.email.hasError('email') ? 'Not a valid email' : '';
-    }
-    /**
-     * Verifica se as senhas digitadas são iguais
-     *
-     * @memberof SignupComponent
-     */
-    checkPasswords() {
-        if (this.user &&
-            this.user.password !== '' &&
-            this.user.password_confirmate !== '' &&
-            this.user.password !== null &&
-            this.user.password_confirmate !== null) {
-            this.password_confirmate = this.services.checkPasswords(this.user.password, this.user.password_confirmate);
+    getErrorMessage(field: any): string {
+        let error = 'Campo obrigatório';
+        if (field.hasError('pattern')) {
+            error = 'Formato inválido';
         }
+        if (field.hasError('minlength')) {
+            error = 'Tamanho mínimo de 6 digitos';
+        }
+        return error;
     }
 }

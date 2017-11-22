@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 
 import env from '../../../@core/services/env';
 import $ from 'jquery';
@@ -11,7 +12,6 @@ import $ from 'jquery';
 @Injectable()
 export class AuthServices {
 
-    constructor() { }
     /**
      * Verifica se as senhas são iguais
      *
