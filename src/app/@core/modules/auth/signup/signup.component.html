@@ -86,9 +86,9 @@
                                 <mat-error class="right" *ngIf="user.controls.password.invalid">{{getErrorMessage(user.controls.password)}}</mat-error>
                             </mat-form-field>
                             <mat-form-field>
-                                <input matInput formControlName="password_confirmate" placeholder="Confirmar senha" [type]="hide_password_confirm ? 'password' : 'text'" required>
+                                <input matInput formControlName="password_confirmation" placeholder="Confirmar senha" [type]="hide_password_confirm ? 'password' : 'text'" required>
                                 <img matSuffix (mousedown)="hide_password_confirm = false" (mouseup)="hide_password_confirm = true" src="./assets/images/ic_eye_{{hide_password_confirm ? 'off' : 'on'}}.svg" class="cursor pointer">
-                                <mat-error class="right" *ngIf="user.controls.password_confirmate.invalid">{{getErrorMessage(user.controls.password_confirmate)}}</mat-error>
+                                <mat-error class="right" *ngIf="user.controls.password_confirmation.invalid">{{getErrorMessage(user.controls.password_confirmation)}}</mat-error>
                             </mat-form-field>
                             <div class="center red-text" *ngIf="user.errors&&user.errors.mismatch">As senhas informadas não são iguais</div>
                         </div>

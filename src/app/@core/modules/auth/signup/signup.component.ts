@@ -16,7 +16,14 @@ import regex from '../../../../@core/services/regex';
 import { AuthServices } from '../../../../@core/modules/auth/auth-services';
 import constante from '../constants';
 import $ from 'jquery';
-
+/**
+ *
+ *
+ *
+ * @export
+ * @class SignupComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
@@ -77,7 +84,26 @@ export class SignupComponent implements OnInit {
      * @memberof SignupComponent
      */
     send() {
+        this.loading = true;
         const user = Object.assign(this.user['_value']);
+        if (this.user.valid) {
+            this.request.send(constante.recurso.user, null, { user: user }).then(response => {
+                console.log(response);
+                this.loading = false;
+                try {
+                    if (typeof response.data.id !== 'undefined') {
+                        // this.subrouter.navigate(`#/verificate-account/${response.data.id}`);
+                        return;
+                    }
+                } catch (error) {
+                    // this.fieldsValidate(response);
+                    return;
+                }
+            }).catch(error => {
+                this.log.error(error);
+                this.loading = false;
+            });
+        }
     }
     /**
      *
@@ -90,7 +116,7 @@ export class SignupComponent implements OnInit {
             username: new FormControl('', [Validators.required]),
             email: new FormControl('', [Validators.required, Validators.pattern(regex.email)]),
             password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-            password_confirmate: new FormControl('', [Validators.required, Validators.minLength(6)]),
+            password_confirmation: new FormControl('', [Validators.required, Validators.minLength(6)]),
             term_accepted: new FormControl(false, [Validators.requiredTrue])
         }, this.passwordMatchValidator);
     }
@@ -102,7 +128,7 @@ export class SignupComponent implements OnInit {
      * @memberof SignupComponent
      */
     passwordMatchValidator(g: FormGroup) {
-        return g.get('password').value === g.get('password_confirmate').value ? null : { 'mismatch': true };
+        return g.get('password').value === g.get('password_confirmation').value ? null : { 'mismatch': true };
     }
     /**
      * Retorna a mensagem de erro de acordo com o erro relatado
@@ -113,7 +139,7 @@ export class SignupComponent implements OnInit {
     getErrorMessage(field: any): string {
         let error = 'Campo obrigatório';
         if (field.hasError('pattern')) {
-            error = 'Formato inválido';
+            error = 'Email no formato inválido. Ex.: mail@mail.com';
         }
         if (field.hasError('minlength')) {
             error = 'Tamanho mínimo de 6 digitos';

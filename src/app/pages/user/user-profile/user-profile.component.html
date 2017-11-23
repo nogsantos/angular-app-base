@@ -4,6 +4,25 @@
             <p>{{user.name}}</p>
             <p>{{user.username}}</p>
             <p>{{user.email}}</p>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <mat-form-field>
+                    <input matInput id="name" placeholder="Nome" formControlName="name">
+                </mat-form-field>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <label for="avatar">Avatar</label>
+                        <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput>
+                        <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <button type="submit" [disabled]="form.invalid || loading" class="btn btn-success">Submit
+                            <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>
