@@ -5,7 +5,7 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
-import { AccountConfirmComponent } from './account-confirm/account-confirm.component';
+import { ConfirmateAccountComponent } from './confirmate-account/confirmate-account.component';
 import { PasswordResetConfirmateComponent } from './password-reset-confirmate/password-reset-confirmate';
 
 const routes: Routes = [{
@@ -35,10 +35,10 @@ const routes: Routes = [{
             }
         },
         {
-            path: 'account-confirmation',
-            component: AccountConfirmComponent,
+            path: 'confirmate-account/:token',
+            component: ConfirmateAccountComponent,
             data: {
-                title: 'Account confirmation'
+                title: 'Confirmate Account'
             }
         },
         {
@@ -60,7 +60,7 @@ const routes: Routes = [{
         RouterModule,
     ],
 })
-export class AuthRoutingModule {}
+export class AuthRoutingModule { }
 /*
  * Exporta os componentes para o módulo
  */
@@ -69,6 +69,6 @@ export const routedComponents = [
     LoginComponent,
     SignupComponent,
     ResetPasswordComponent,
-    AccountConfirmComponent,
+    ConfirmateAccountComponent,
     PasswordResetConfirmateComponent,
 ];

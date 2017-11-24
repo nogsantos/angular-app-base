@@ -59,8 +59,8 @@
                 </mat-card-content>
             </mat-card>
         </div>
-        <!--formulario-->
-        <div class="col s12 m12 l5">
+        <!--formulario cadastro-->
+        <div *ngIf="!user_id; else successData" class="col s12 m12 l5">
             <form [formGroup]="user" autocomplete="off">
                 <mat-card>
                     <mat-card-title>
@@ -112,16 +112,50 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="row" *ngIf="solicitated&&response">
+                    </mat-card-actions>
+                </mat-card>
+            </form>
+        </div>
+        <!--formulario sucesso-->
+        <ng-template #successData>
+            <div class="col s12 m12 l5">
+                <mat-card>
+                    <mat-card-title>
+                        <h5 class="flow-text">Ol&aacute; {{user.controls.name.value}}</h5>
+                    </mat-card-title>
+                    <mat-card-content>
+                        <p class="card-panel white-text text-darken-1 green lighten-2">Um e-mail de confirma&ccedil;&atilde;o foi enviado para a conta informada
+                            <i>{{user.controls.email.value}}</i>, siga as instru&ccedil;&otilde;es para ativa seu cadastro.</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <div class="row">
+                            <div class="col s12 m12 l4">
+                                <span class="left">
+                                    <a href="#/auth/login" mat-button>Voltar</a>
+                                </span>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <span class="center">
+                                    <img src="./assets/images/ic_loader.gif" alt="Carregando..." class="reset-loading" *ngIf="loading">
+                                    <button mat-raised-button (click)="resendEmail()" color="primary">Reenviar e-mail</button>
+                                </span>
+                            </div>
+                            <div class="col s12 m12 l4">
+                                <span class="right">
+                                    <button mat-raised-button (click)="novoCadastro()" class="green lighteen-3 white-text">Novo cadastro</button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row" *ngIf="email_resent">
                             <div class="col s12 m12 l12">
-                                <div class="card-panel white-text text-darken-1 green lighten-2 flow-text text-center">
-                                    Redefini&ccedil;&atilde;o da senha enviada com sucesso para o e-mail informado. Acesse essa conta para mais instru&ccedil;&otilde;es.
+                                <div class="card-panel white-text text-darken-1 blue lighten-2 flow-text center">
+                                    Email reenviado com sucesso
                                 </div>
                             </div>
                         </div>
                     </mat-card-actions>
                 </mat-card>
-            </form>
-        </div>
+            </div>
+        </ng-template>
     </div>
 </div>

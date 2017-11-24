@@ -21,20 +21,34 @@ export class HttpService {
     /**
      * Get
      *
-     * @param {string} resorce
-     * @param {string} [search_by] {term}
+     * @param {string} resorce Recurso a ser solicitado
+     * @param {Object} [search_by] Deve ser informado um termo para a pesquisa Ex.: { term: 'some'}
+     * @param {Object} [obj] Enviar um objeto para a pesquisa Ex.: { campo: valor }
      * @returns {Promise<any[]>}
      * @memberof HttpService
      */
-    get(resorce: string, search_by?: { term?: string }): Promise<any[]> {
+    get(resorce: string, search_by?: { term?: string }, obj?: any): Promise<any[]> {
         let parameter = '';
         if (search_by) {
             if (search_by.term) {
                 parameter = `/?search=${search_by.term}`;
             }
         }
+        if (obj) {
+            let first = true;
+            for (const key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    if (first) {
+                        parameter += `?${key}=${obj[key]}`;
+                        first = false;
+                    } else {
+                        parameter += `&${key}=${obj[key]}`;
+                    }
+                }
+            }
+        }
         return this.http.get(
-            `${resorce}${parameter}`,
+            `${this.config.address}${resorce}${parameter}`,
             {
                 headers: this.headers
             }

@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col s12 m12 l12 valign-wrapper">
+        <mat-card *ngIf="user; else noUser">
+            <mat-card-content>
+                <div class="row flow-text">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <p>Bem vind@&nbsp; <b>{{user.name}}</b>!</p>
+                        </div>
+                    </div>
+                    <div class="card-panel green lighten-3 white-text strong text-darken-2">
+                        <h2 class="center">Conta ativada</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <p>Seu e-mail <b>{{user.email}}</b> foi confirmado com sucesso e voc&ecirc; j&aacute; est&aacute; apt@ para utilizar o sistema.</p>
+                        </div>
+                    </div>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="row flow-text text-center">
+                    <div class="row text-center">
+                        <button mat-button color="primary" (click)="login()">Clique para acessar</button>
+                    </div>
+                </div>
+            </mat-card-actions>
+        </mat-card>
+        <ng-template #noUser>
+            <mat-card>
+                <mat-card-content>
+                    <div class="row flow-text text-center">
+                        <div class="card-panel red lighten-3 white-text strong text-darken-2">
+                            <h2 class="center">N&atilde;o localizado</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                O recurso solicitado n&atilde;o foi localizado em nosso sistema.
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="row text-center">
+                        <button mat-button color="warn" (click)="login()">Clique para retornar</button>
+                    </div>
+                </mat-card-actions>
+            </mat-card>
+        </ng-template>
+    </div>
+</div>

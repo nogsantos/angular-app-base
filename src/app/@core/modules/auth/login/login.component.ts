@@ -14,6 +14,7 @@ import env from '../../../../@core/services/env';
 import { User } from '../user';
 import constante from '../constants';
 import KJUR from 'jsrsasign';
+import * as swal from 'sweetalert';
 
 @Component({
     selector: 'app-login',
@@ -84,8 +85,10 @@ export class LoginComponent implements OnInit {
                     /*
                      * Então, redireciona
                      */
-                    this.storage.set(env.app.conf.token_name, response.key);
-                    this.router.navigate(['dashboard']);
+                    swal(this.redirectAlert()).then(() => {
+                        this.storage.set(env.app.conf.token_name, response.key);
+                        this.router.navigate(['dashboard']);
+                    });
                 });
             }
             this.loading = false;
@@ -99,5 +102,20 @@ export class LoginComponent implements OnInit {
                     verticalPosition: 'top'
                 });
         });
+    }
+    /**
+     * Configurações para o alert de redirecionamento
+     *
+     * @private
+     * @returns {(string | Partial<any>)}
+     * @memberof LoginComponent
+     */
+    private redirectAlert(): string | Partial<any> {
+        return {
+            title: 'Redirecionando...',
+            icon: 'success',
+            timer: 2000,
+            buttons: false
+        };
     }
 }

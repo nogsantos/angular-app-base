@@ -7,7 +7,8 @@
 export default {
     recurso: {
         login: `/auths`,
-        user: `/users`,
+        users: `/users`,
+        user: `/user`,
         confirmation: `/confirmations`
     }
 };
