@@ -4,7 +4,7 @@ import { Router, CanActivate } from '@angular/router';
 import { Storage } from './storage.service';
 import env from '../../@core/services/env';
 /**
- *
+ * Rotinas Authguard
  *
  * @export
  * @class AuthGuardService
@@ -22,7 +22,7 @@ export class AuthGuardService implements CanActivate {
         private router: Router
     ) { }
     /**
-     * @todo
+     * Define se o usuário pode acessar o recurso
      *
      * @returns {boolean}
      * @memberof AuthGuardService

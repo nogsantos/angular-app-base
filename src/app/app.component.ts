@@ -5,7 +5,13 @@ import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
-
+/**
+ * Componente do app
+ *
+ * @export
+ * @class AppComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-root',
     template: '<router-outlet></router-outlet>'

@@ -3,29 +3,38 @@ import { Injectable } from '@angular/core';
 import PouchDB from 'pouchdb';
 import { LogService } from './log.service';
 import { environment } from '../../../environments/environment';
-// import PouchdbFind from 'pouchdb-find';
 
 /**
- * @description
- *  Tratamento dos storages
+ *
+ * Tratamento dos storages com o pouch
  *
  * @export
  * @class Storage
  */
 @Injectable()
 export class DatabaseService {
+    /**
+     * Atributo da classe
+     *
+     * @type {PouchDB}
+     * @memberof DatabaseService
+     */
     db: PouchDB;
     /**
-     *
-     *
-     * @memberof WebDataBase
+     * Creates an instance of DatabaseService.
+     * @param {LogService} log
+     * @memberof DatabaseService
      */
     constructor(
         private log: LogService
     ) {
         this.create();
     }
-
+    /**
+     * Cria o storage
+     *
+     * @memberof DatabaseService
+     */
     create() {
         try {
             this.db = new PouchDB('web');

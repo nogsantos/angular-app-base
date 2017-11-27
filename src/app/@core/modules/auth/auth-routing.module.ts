@@ -51,7 +51,12 @@ const routes: Routes = [{
         { path: '**', redirectTo: 'login', pathMatch: 'full' },
     ],
 }];
-
+/**
+ * Rotas auth
+ *
+ * @export
+ * @class AuthRoutingModule
+ */
 @NgModule({
     imports: [
         RouterModule.forChild(routes),

@@ -8,7 +8,12 @@ import { ThemeModule } from '../@theme/theme.module';
 const PAGES_COMPONENTS = [
     PagesComponent,
 ];
-
+/**
+ * Módulo das páginas
+ *
+ * @export
+ * @class PagesModule
+ */
 @NgModule({
     imports: [
         PagesRoutingModule,

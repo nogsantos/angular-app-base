@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Componente para o dashboard
+ *
+ * @export
+ * @class DashboardComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',

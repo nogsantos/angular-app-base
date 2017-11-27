@@ -17,7 +17,12 @@ const routes: Routes = [{
         }
     }],
 }];
-
+/**
+ * Rotas usuários
+ *
+ * @export
+ * @class UserRoutingModule
+ */
 @NgModule({
     imports: [
         RouterModule.forChild(routes),

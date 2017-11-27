@@ -18,8 +18,7 @@ import constante from '../constants';
 import $ from 'jquery';
 import * as swal from 'sweetalert';
 /**
- *
- *
+ * Signup auth component
  *
  * @export
  * @class SignupComponent
@@ -32,15 +31,58 @@ import * as swal from 'sweetalert';
     providers: [AuthServices]
 })
 export class SignupComponent implements OnInit {
-    hide_password: boolean; // Ocultar ou apresentar a senha para o usuário
-    hide_password_confirm: boolean; // Ocultar ou apresentar a senha para o usuário
+    /**
+     * Ocultar ou apresentar a senha para o usuário
+     *
+     * @type {boolean}
+     * @memberof SignupComponent
+     */
+    hide_password: boolean;
+    /**
+     * Ocultar ou apresentar a senha para o usuário
+     *
+     * @type {boolean}
+     * @memberof SignupComponent
+     */
+    hide_password_confirm: boolean;
+    /**
+     * Define o loading para a view
+     *
+     * @type {boolean}
+     * @memberof SignupComponent
+     */
     loading: boolean;
+    /**
+     * Confirmação de igualdade entre as senhas
+     *
+     * @type {boolean}
+     * @memberof SignupComponent
+     */
     password_confirmate: boolean;
+    /**
+     * Reenvio para o email
+     *
+     * @type {*}
+     * @memberof SignupComponent
+     */
     email_resent: any;
+    /**
+     * Formgroup usuário
+     *
+     * @type {FormGroup}
+     * @memberof SignupComponent
+     */
     user: FormGroup;
+    /**
+     * Id do usuário recem cadastrado
+     *
+     * @type {number}
+     * @memberof SignupComponent
+     */
     user_id: number;
     /**
      * Creates an instance of SignupComponent.
+     * Inject:
      * @param {HttpService} request
      * @param {LogService} log
      * @param {Storage} storage
@@ -63,7 +105,7 @@ export class SignupComponent implements OnInit {
         private services: AuthServices
     ) { }
     /**
-     *
+     * Init
      *
      * @memberof SignupComponent
      */
@@ -76,7 +118,7 @@ export class SignupComponent implements OnInit {
         this.validates();
     }
     /**
-     *
+     * Ação de cancelar, redireciona para a tela de login
      *
      * @memberof SignupComponent
      */
@@ -84,7 +126,7 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/']);
     }
     /**
-     *
+     * Envia a requisição
      *
      * @memberof SignupComponent
      */
@@ -112,7 +154,7 @@ export class SignupComponent implements OnInit {
         }
     }
     /**
-     *
+     * Define as validações do formcontrol
      *
      * @memberof SignupComponent
      */

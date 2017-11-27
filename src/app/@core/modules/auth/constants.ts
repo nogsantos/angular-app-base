@@ -1,5 +1,5 @@
 /**
- *
+ * Constantes do módulo
  *
  * @export
  * @class Constants

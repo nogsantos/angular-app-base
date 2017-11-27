@@ -26,7 +26,12 @@ const routes: Routes = [{
         pathMatch: 'full',
     }],
 }];
-
+/**
+ * Rotas das páginas
+ *
+ * @export
+ * @class PagesRoutingModule
+ */
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],

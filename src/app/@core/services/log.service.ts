@@ -6,28 +6,6 @@ import 'rxjs/add/operator/catch';
 
 import { environment } from '../../../environments/environment';
 
-/**
- *
- *
- * @export
- * @class LoggerConfig
- */
-export class LoggerConfig {
-    level: LoggerLevel;
-    serverLogLevel: LoggerLevel;
-    serverLoggingUrl?: string;
-    enableDarkTheme?: boolean;
-}
-/**
- *
- *
- * @export
- * @enum {number}
- */
-export enum LoggerLevel {
-    TRACE = 0, DEBUG, INFO, LOG, WARN, ERROR, OFF
-}
-
 const Levels = [
     'TRACE',
     'DEBUG',
@@ -47,7 +25,21 @@ const Levels = [
  */
 @Injectable()
 export class LogService {
+    /**
+     * Level do log
+     *
+     * @private
+     * @type {LoggerLevel}
+     * @memberof LogService
+     */
     private _clientLogLevel: LoggerLevel;
+    /**
+     * Confirma se é o internet explorer
+     *
+     * @private
+     * @type {boolean}
+     * @memberof LogService
+     */
     private _isIE: boolean;
     /**
      * Creates an instance of LogService.
@@ -67,7 +59,7 @@ export class LogService {
             !!(navigator.userAgent.indexOf('MSIE') !== -1 || navigator.userAgent.match(/Trident\//) || navigator.userAgent.match(/Edge\//));
     }
     /**
-     *
+     * Trace log
      *
      * @param {any} message
      * @param {...any[]} additional
@@ -77,7 +69,7 @@ export class LogService {
         this._log(LoggerLevel.TRACE, true, message, additional);
     }
     /**
-     *
+     * Debug log
      *
      * @param {any} message
      * @param {...any[]} additional
@@ -87,7 +79,7 @@ export class LogService {
         this._log(LoggerLevel.DEBUG, true, message, additional);
     }
     /**
-     *
+     * Info log
      *
      * @param {any} message
      * @param {...any[]} additional
@@ -97,7 +89,7 @@ export class LogService {
         this._log(LoggerLevel.INFO, true, message, additional);
     }
     /**
-     *
+     * Just log
      *
      * @param {any} message
      * @param {...any[]} additional
@@ -107,7 +99,7 @@ export class LogService {
         this._log(LoggerLevel.LOG, true, message, additional);
     }
     /**
-     *
+     * Warning log
      *
      * @param {any} message
      * @param {...any[]} additional
@@ -117,7 +109,7 @@ export class LogService {
         this._log(LoggerLevel.WARN, true, message, additional);
     }
     /**
-     *
+     * Error log
      *
      * @param {any} message
      * @param {...any[]} additional
@@ -127,7 +119,7 @@ export class LogService {
         this._log(LoggerLevel.ERROR, true, message, additional);
     }
     /**
-     *
+     * Timer log
      *
      * @private
      * @returns
@@ -137,6 +129,7 @@ export class LogService {
         return new Date().toISOString();
     }
     /**
+     * IE log
      *
      * @param level
      * @param message
@@ -158,7 +151,7 @@ export class LogService {
         }
     }
     /**
-     *
+     * Make log
      *
      * @private
      * @param {LoggerLevel} level
@@ -218,4 +211,51 @@ export class LogService {
         const defaultColor = !this.options.enableDarkTheme ? 'white' : 'black';
         console.log(`%c${this._timestamp()} [${Levels[level]}] %c${message}`, `color:${color1}`, `color:${defaultColor}`, ...additional);
     }
+}
+
+/**
+ * Log leve
+ *
+ * @export
+ * @class LoggerConfig
+ */
+export class LoggerConfig {
+    /**
+     * Nível do log
+     *
+     * @type {LoggerLevel}
+     * @memberof LoggerConfig
+     */
+    level: LoggerLevel;
+    /**
+     * Sincronização do log com um serviço
+     *
+     * @type {LoggerLevel}
+     * @memberof LoggerConfig
+     */
+    serverLogLevel: LoggerLevel;
+    /**
+     * Url do serviço
+     *
+     * @type {string}
+     * @memberof LoggerConfig
+     */
+    serverLoggingUrl?: string;
+    /**
+     * Tema do log
+     *
+     * @type {boolean}
+     * @memberof LoggerConfig
+     */
+    enableDarkTheme?: boolean;
+}
+
+/**
+ * Enum Log level
+ *
+ * @export
+ * @enum {number}
+ */
+export enum LoggerLevel {
+    TRACE = 0, DEBUG, INFO, LOG, WARN, ERROR, OFF
 }

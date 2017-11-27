@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 /**
- * @description
- *  Tratamento dos storages
+ * Tratamento dos storages
  *
  * @export
  * @class Storage
@@ -9,7 +8,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Storage {
     /**
+     * Creates an instance of Storage.
      * @see _getStorage()
+     * @memberof Storage
      */
     constructor() {
         this.getStorage();

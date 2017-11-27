@@ -4,14 +4,13 @@ import { AbstractControl } from '@angular/forms';
 import env from '../../../@core/services/env';
 import $ from 'jquery';
 /**
- *
+ * Service auth
  *
  * @export
  * @class AuthServices
  */
 @Injectable()
 export class AuthServices {
-
     /**
      * Verifica se as senhas são iguais
      *
@@ -24,10 +23,10 @@ export class AuthServices {
         return $.trim(password) === $.trim(confirm_password);
     }
     /**
-     * @legends Adicina classe a um elemento quando hover scroll na página, à partir de uma referência.
-     *
-     * @example Para ativar o método, adicionar a chamada no ngOnInit()
-     *
+     * Adicina classe a um elemento quando hover scroll na página, à partir de uma referência.
+     *```typescript
+     * Para ativar o método, adicionar a chamada no ngOnInit()
+     *```
      * @param {string} target Alvo a ser adicionado a classe
      * @param {string} screen_width Valores s, m, l
      * @param {string} css_class Classe a ser adicionada ao elemento

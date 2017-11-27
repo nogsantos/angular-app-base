@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
+/**
+ * Componente auth
+ *
+ * @export
+ * @class AuthComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-auth',
     styleUrls: ['./auth.component.scss'],

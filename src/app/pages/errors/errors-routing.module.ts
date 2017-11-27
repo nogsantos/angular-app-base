@@ -12,7 +12,12 @@ const routes: Routes = [{
         component: NotFoundComponent,
     }],
 }];
-
+/**
+ * Rotas erros
+ *
+ * @export
+ * @class ErrorsRoutingModule
+ */
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],

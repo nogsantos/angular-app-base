@@ -20,8 +20,10 @@ export class MessageService {
     /**
      * Envia uma mensagem
      *
-     * Ex.: this.message.fire('string');
-     *
+     * Ex.:
+     * ```
+     *  this.message.fire('string');
+     * ```
      * @param {string} data
      * @memberof MessageService
      */
@@ -32,10 +34,11 @@ export class MessageService {
      * Recebe uma mensagem
      *
      * Ex.:
-     * this.message.on().subscribe(an_string => {
-     *      // do someting...
-     *  });
-     *
+     * ```
+     *  this.message.on().subscribe(an_string => {
+     *       // do someting...
+     *   });
+     * ```
      * @returns {Observable<string>}
      * @memberof MessageService
      */

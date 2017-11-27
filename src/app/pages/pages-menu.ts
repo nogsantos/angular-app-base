@@ -1,5 +1,7 @@
-// import { NbMenuItem } from '@nebular/theme';
-
+/**
+ * Menu das páginas
+ *
+ */
 export const MENU_ITEMS = [
     {
         title: 'Dashboard',

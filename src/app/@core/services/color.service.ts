@@ -1,7 +1,19 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * Cores dinâmicas para serem usadas em alguma funcionalidade do sistema.
+ *
+ * @export
+ * @class ColorService
+ */
 @Injectable()
 export class ColorService {
+    /**
+     * Constante cores pre-definidas
+     *
+     * @private
+     * @memberof ColorService
+     */
     private colors = [
         `red`,
         `pink`,

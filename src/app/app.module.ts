@@ -27,7 +27,12 @@ const SERVICES = [
     DatabaseService,
     { provide: APP_BASE_HREF, useValue: '/' }
 ];
-
+/**
+ * Módulo do app
+ *
+ * @export
+ * @class AppModule
+ */
 @NgModule({
     declarations: [
         AppComponent

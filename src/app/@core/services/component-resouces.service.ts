@@ -4,6 +4,13 @@ import { ComponentResources } from './component-resources';
 import { MatDialog } from '@angular/material';
 import { Sort } from '@angular/material';
 
+/**
+ * Recursos defaults para utilização no sistema
+ *
+ * @export
+ * @class ComponentResoucesService
+ * @implements {ComponentResources}
+ */
 @Injectable()
 export class ComponentResoucesService implements ComponentResources {
     /**

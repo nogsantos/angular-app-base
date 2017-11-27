@@ -1,7 +1,10 @@
 /**
- *
- * Regex patterns
- *
+ * Defição patterns para o sistema
+ * Disponíveis
+ * ```
+ * email
+ * ```
+ * @export Regex
  */
 export default {
     // tslint:disable-next-line:max-line-length

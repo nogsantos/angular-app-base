@@ -1,15 +1,20 @@
 import { Injectable } from '@angular/core';
 
+/**
+ * MD5 encrypt
+ *
+ * @export
+ * @class Md5Service
+ */
 @Injectable()
 export class Md5Service {
-
     /**
      * Creates an instance of Config.
      * @memberof Config
      */
     constructor() { }
-    /**
-    *
+   /**
+    * Rotate left
     *
     * @param {any} lValue
     * @param {any} iShiftBits
@@ -22,7 +27,7 @@ export class Md5Service {
         return (lValue << iShiftBits) | (lValue >>> (32 - iShiftBits));
     }
     /**
-     *
+     * Add Unsigned
      *
      * @param {any} lX
      * @param {any} lY
@@ -52,7 +57,7 @@ export class Md5Service {
         }
     }
     /**
-     *
+     * F method
      *
      * @param {any} x
      * @param {any} y
@@ -63,7 +68,7 @@ export class Md5Service {
      */
     private F(x, y, z) { return (x & y) | ((~x) & z); }
     /**
-     *
+     * G Method
      *
      * @param {any} x
      * @param {any} y
@@ -74,7 +79,7 @@ export class Md5Service {
      */
     private G(x, y, z) { return (x & z) | (y & (~z)); }
     /**
-     *
+     * H method
      *
      * @param {any} x
      * @param {any} y
@@ -85,7 +90,7 @@ export class Md5Service {
      */
     private H(x, y, z) { return (x ^ y ^ z); }
     /**
-     *
+     * I method
      *
      * @param {any} x
      * @param {any} y
@@ -96,7 +101,7 @@ export class Md5Service {
      */
     private I(x, y, z) { return (y ^ (x | (~z))); }
     /**
-     *
+     * FF method
      *
      * @param {any} a
      * @param {any} b
@@ -114,7 +119,7 @@ export class Md5Service {
         return this.AddUnsigned(this.RotateLeft(a, s), b);
     }
     /**
-     *
+     * GG method
      *
      * @param {any} a
      * @param {any} b
@@ -132,7 +137,7 @@ export class Md5Service {
         return this.AddUnsigned(this.RotateLeft(a, s), b);
     }
     /**
-     *
+     * HH method
      *
      * @param {any} a
      * @param {any} b
@@ -150,7 +155,7 @@ export class Md5Service {
         return this.AddUnsigned(this.RotateLeft(a, s), b);
     }
     /**
-     *
+     * II method
      *
      * @param {any} a
      * @param {any} b
@@ -168,7 +173,7 @@ export class Md5Service {
         return this.AddUnsigned(this.RotateLeft(a, s), b);
     }
     /**
-     *
+     * Convert to word array
      *
      * @param {any} string
      * @returns
@@ -198,7 +203,7 @@ export class Md5Service {
         return lWordArray;
     }
     /**
-     *
+     * Word to hex
      *
      * @param {any} lValue
      * @returns
@@ -215,7 +220,7 @@ export class Md5Service {
         return WordToHexValue;
     }
     /**
-     *
+     * Utf8 encode
      *
      * @param {any} string
      * @returns
@@ -245,7 +250,7 @@ export class Md5Service {
         return utftext;
     }
     /**
-     *
+     * Encode a string to md5 cripto
      *
      * @param {any} string
      * @returns

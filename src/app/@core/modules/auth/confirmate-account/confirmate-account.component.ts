@@ -10,14 +10,35 @@ import {
 import env from '../../../../@core/services/env';
 import constante from '../constants';
 import $ from 'jquery';
-
+/**
+ * Confirmação da conta do usuário.
+ * Ao se cadastrar no sistema, o usuário recebe um email com um código que, ao acessá-lo,
+ * caso ainda esteja ativo, o sistema o confirma como um usuário válido, possibilitando assim seu acesso ao sistema.
+ *
+ * @export
+ * @class ConfirmateAccountComponent
+ * @implements {OnInit}
+ * @implements {OnDestroy}
+ */
 @Component({
     selector: 'app-confirmate-account',
     templateUrl: './confirmate-account.html',
     styleUrls: ['./confirmate-account.scss']
 })
 export class ConfirmateAccountComponent implements OnInit, OnDestroy {
+    /**
+     * Subscribe, acessa os parametros definidos nas rotas do sistema
+     *
+     * @private
+     * @type {*}
+     * @memberof ConfirmateAccountComponent
+     */
     private sub: any;
+    /**
+     * Objeto usuário
+     *
+     * @memberof ConfirmateAccountComponent
+     */
     user = {
         name: null,
         email: null,
@@ -25,6 +46,7 @@ export class ConfirmateAccountComponent implements OnInit, OnDestroy {
     };
     /**
      * Creates an instance of ConfirmateAccountComponent.
+     * Inject:
      * @param {HttpService} request
      * @param {LogService} log
      * @param {Storage} storage
@@ -43,7 +65,7 @@ export class ConfirmateAccountComponent implements OnInit, OnDestroy {
         private activatedRoute: ActivatedRoute
     ) { }
     /**
-     *
+     * Init
      *
      * @memberof ConfirmateAccountComponent
      */
@@ -71,7 +93,7 @@ export class ConfirmateAccountComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
     /**
-     *
+     * Realiza a confirmação de acordo com o token informado
      *
      * @memberof ConfirmateAccountComponent
      */

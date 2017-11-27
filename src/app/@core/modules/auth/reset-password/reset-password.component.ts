@@ -13,22 +13,64 @@ import {
 import env from '../../../../@core/services/env';
 import regex from '../../../../@core/services/regex';
 import constante from '../constants';
-
+/**
+ * Solicitação para recadastro da senha
+ *
+ * @export
+ * @class ResetPasswordComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-reset-password',
     templateUrl: './reset-password.component.html',
     styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
+    /**
+     * Loading para o formulário
+     *
+     * @type {boolean}
+     * @memberof ResetPasswordComponent
+     */
     loading: boolean;
+    /**
+     * Form control
+     *
+     * @type {FormControl}
+     * @memberof ResetPasswordComponent
+     */
     formControl: FormControl;
+    /**
+     * Define se foi solicitado
+     *
+     * @type {boolean}
+     * @memberof ResetPasswordComponent
+     */
     solicitated: boolean;
+    /**
+     * Foi respondido
+     *
+     * @type {boolean}
+     * @memberof ResetPasswordComponent
+     */
     response: boolean;
+    /**
+     * Objeto Usuário
+     *
+     * @memberof ResetPasswordComponent
+     */
     user = {
         email: null,
     };
     /**
      * Creates an instance of ResetPasswordComponent.
+     * Inject:
+     * @param {HttpService} request
+     * @param {LogService} log
+     * @param {Storage} storage
+     * @param {DatabaseService} db
+     * @param {AuthGuardService} auth
+     * @param {MatSnackBar} snackBar
      * @memberof ResetPasswordComponent
      */
     constructor(
@@ -40,7 +82,7 @@ export class ResetPasswordComponent implements OnInit {
         private snackBar: MatSnackBar
     ) { }
     /**
-     *
+     * Init
      *
      * @memberof ResetPasswordComponent
      */
@@ -49,7 +91,7 @@ export class ResetPasswordComponent implements OnInit {
         this.formControl = new FormControl('', [Validators.required, Validators.pattern(regex.email)]);
     }
     /**
-     *
+     * Envia a requisição
      *
      * @memberof ResetPasswordComponent
      */
@@ -88,7 +130,7 @@ export class ResetPasswordComponent implements OnInit {
         }, 10000);
     }
     /**
-     *
+     * Limpa o formulário
      *
      * @memberof ResetPasswordComponent
      */

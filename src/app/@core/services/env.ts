@@ -1,7 +1,14 @@
 /**
- * Env defaults
+ * Valores default de ambiente
+ *
+ * @export Env
  */
 export default {
+    /**
+     * Objeto App
+     *
+     * @export Env
+     */
     app: {
         event: { // publish para EventAggregator
             update: 'update',
@@ -20,6 +27,11 @@ export default {
             }
         }
     },
+    /**
+     * Media query, valores default para os possíveis tamanhos de tela.
+     *
+     * @export Env
+     */
     media_query_screen: {
         small_up: 601,
         medium_up: 993,

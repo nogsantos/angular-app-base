@@ -8,7 +8,7 @@ import {
 import env from '../../../@core/services/env';
 import { element } from 'protractor';
 /**
- * User profile
+ * Perfil do usuário
  *
  * @todo file upload form-data
  *
@@ -22,9 +22,32 @@ import { element } from 'protractor';
     styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+    /**
+     * Formgroup components
+     *
+     * @type {FormGroup}
+     * @memberof UserProfileComponent
+     */
     form: FormGroup;
+    /**
+     * View loading
+     *
+     * @type {boolean}
+     * @memberof UserProfileComponent
+     */
     loading: boolean;
+    /**
+     * File input
+     *
+     * @type {ElementRef}
+     * @memberof UserProfileComponent
+     */
     @ViewChild('fileInput') fileInput: ElementRef;
+    /**
+     * Objeto usuário
+     *
+     * @memberof UserProfileComponent
+     */
     user = {
         name: null,
         username: null,
@@ -32,6 +55,11 @@ export class UserProfileComponent implements OnInit {
     };
     /**
      * Creates an instance of UserProfileComponent.
+     * Inject:
+     * @param {DatabaseService} db
+     * @param {LogService} log
+     * @param {FormBuilder} fb
+     * @param {Storage} storage
      * @memberof UserProfileComponent
      */
     constructor(
@@ -41,7 +69,7 @@ export class UserProfileComponent implements OnInit {
         private storage: Storage
     ) { }
     /**
-     *
+     * Init
      *
      * @memberof UserProfileComponent
      */
@@ -51,7 +79,7 @@ export class UserProfileComponent implements OnInit {
         this.getUserData();
     }
     /**
-     *
+     * Consulta os dados do usuário
      *
      * @memberof UserProfileComponent
      */
@@ -67,6 +95,7 @@ export class UserProfileComponent implements OnInit {
         }
     }
     /**
+     * Inicialização do formulário
      *
      * @memberof UserProfileComponent
      */
@@ -77,7 +106,7 @@ export class UserProfileComponent implements OnInit {
         });
     }
     /**
-     *
+     * Alteração do arquivo de upload
      *
      * @param {any} event
      * @memberof UserProfileComponent
@@ -91,7 +120,7 @@ export class UserProfileComponent implements OnInit {
         }
     }
     /**
-     *
+     * Preparação para o envio do arquivo
      *
      * @private
      * @returns {*}
@@ -105,7 +134,7 @@ export class UserProfileComponent implements OnInit {
         return input;
     }
     /**
-     *
+     * Envio dos dados
      *
      * @memberof UserProfileComponent
      */
@@ -126,7 +155,11 @@ export class UserProfileComponent implements OnInit {
         //     this.loading = false;
         // }, 1000);
     }
-
+    /**
+     * Limpa o formulário
+     *
+     * @memberof UserProfileComponent
+     */
     clearFile() {
         this.form.get('avatar').setValue(null);
         this.fileInput.nativeElement.value = '';

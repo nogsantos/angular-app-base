@@ -5,7 +5,12 @@ import { AuthGuardService } from './services';
 const CORE_PROVIDERS = [
     AuthGuardService
 ];
-
+/**
+ * Módulo do core do app
+ *
+ * @export
+ * @class CoreModule
+ */
 @NgModule({
     imports: [
         CommonModule,

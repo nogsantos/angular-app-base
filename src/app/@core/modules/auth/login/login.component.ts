@@ -15,18 +15,50 @@ import { User } from '../user';
 import constante from '../constants';
 import KJUR from 'jsrsasign';
 import * as swal from 'sweetalert';
-
+/**
+ * Componente para autenticação (Login)
+ *
+ * @export
+ * @class LoginComponent
+ * @implements {OnInit}
+ */
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    hide: boolean; // Ocultar ou apresentar a senha para o usuário
+    /**
+     *  Ocultar ou apresentar a senha para o usuário
+     *
+     * @type {boolean}
+     * @memberof LoginComponent
+     */
+    hide: boolean;
+    /**
+     * Objeto usuário
+     *
+     * @type {User}
+     * @memberof LoginComponent
+     */
     user: User = new User();
+    /**
+     * Loading para a view
+     *
+     * @type {boolean}
+     * @memberof LoginComponent
+     */
     loading: boolean;
     /**
      * Creates an instance of LoginComponent.
+     * Inject
+     * @param {HttpService} request
+     * @param {LogService} log
+     * @param {Storage} storage
+     * @param {DatabaseService} db
+     * @param {AuthGuardService} auth
+     * @param {Router} router
+     * @param {MatSnackBar} snackBar
      * @memberof LoginComponent
      */
     constructor(

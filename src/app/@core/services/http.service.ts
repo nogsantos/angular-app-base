@@ -5,25 +5,40 @@ import 'rxjs/add/operator/toPromise';
 import { ConfigService } from './config.service';
 import { LogService } from './log.service';
 
+/**
+ * Configurações e acesso aos recursos do serviço
+ *
+ * @export
+ * @class HttpService
+ */
 @Injectable()
 export class HttpService {
+    /**
+     * Header das requisições
+     *
+     * @private
+     * @memberof HttpService
+     */
     private headers = new Headers({ 'Content-Type': 'application/json' });
     /**
      * Creates an instance of HttpService.
+     * Inject:
      * @param {Http} http
+     * @param {LogService} log
+     * @param {ConfigService} config
      * @memberof HttpService
      */
     constructor(
         private http: Http,
-        public log: LogService,
+        private log: LogService,
         private config: ConfigService
     ) { }
     /**
-     * Get
+     * Get a resource from server
      *
      * @param {string} resorce Recurso a ser solicitado
-     * @param {Object} [search_by] Deve ser informado um termo para a pesquisa Ex.: { term: 'some'}
-     * @param {Object} [obj] Enviar um objeto para a pesquisa Ex.: { campo: valor }
+     * @param {Object} [search_by] Deve ser informado um termo para a pesquisa Ex.: ```{ term: 'some'}```
+     * @param {Object} [obj] Enviar um objeto para a pesquisa Ex.: ``` { campo: valor } ```
      * @returns {Promise<any[]>}
      * @memberof HttpService
      */
@@ -55,7 +70,7 @@ export class HttpService {
         ).toPromise().then(response => response.json()).catch(this.handleError);
     }
     /**
-     *
+     * Send values to server
      *
      * @param {string} resource
      * @param {number} [id]
@@ -76,7 +91,7 @@ export class HttpService {
     }
 
     /**
-     * Error
+     * Handle erros from requests
      *
      * @private
      * @param {*} error
